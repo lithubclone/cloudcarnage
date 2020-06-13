@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ambient_office_spice4.wav-d00864d4025ed4c5a0e3ca5c26ba86eb.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/music/ambient_office_spice4.wav"
+dest_files=[ "res://.import/ambient_office_spice4.wav-d00864d4025ed4c5a0e3ca5c26ba86eb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
