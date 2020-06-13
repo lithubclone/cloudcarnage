@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Title/Buttons/NewGameButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Title/Buttons/ContinueButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Title/Buttons/OptionsButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sprites/Player0/idle/Player0Idle1.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Title/Buttons/magic_16.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Scenes/Title/FadeIn/FadeIn.tscn" type="PackedScene" id=8]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TitleScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Menu" type="VBoxContainer" parent="TitleScreen"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 490.0
+margin_bottom = 280.0
+
+[node name="Logo" type="TextureRect" parent="TitleScreen/Menu"]
+margin_right = 470.0
+margin_bottom = 33.0
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="CenterRow" type="HBoxContainer" parent="TitleScreen/Menu"]
+margin_top = 37.0
+margin_right = 470.0
+margin_bottom = 231.0
+
+[node name="Buttons" type="VBoxContainer" parent="TitleScreen/Menu/CenterRow"]
+margin_right = 360.0
+margin_bottom = 194.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 7
+alignment = 1
+
+[node name="NewGameButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+rect_min_size = Vector2( 360, 60 )
+
+[node name="ContinueButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 67.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 360, 60 )
+
+[node name="OptionsButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 134.0
+margin_bottom = 194.0
+rect_min_size = Vector2( 360, 60 )
+
+[node name="CenterContainer" type="CenterContainer" parent="TitleScreen/Menu/CenterRow"]
+margin_left = 364.0
+margin_right = 470.0
+margin_bottom = 194.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Characters" type="TextureRect" parent="TitleScreen/Menu/CenterRow/CenterContainer"]
+margin_left = 37.0
+margin_top = 81.0
+margin_right = 69.0
+margin_bottom = 113.0
+texture = ExtResource( 6 )
+
+[node name="VersionLabel" type="Label" parent="TitleScreen/Menu"]
+margin_top = 235.0
+margin_right = 470.0
+margin_bottom = 270.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 7 )
+text = "Version 0.1.1
+Team11 Null"
+align = 2
+valign = 1
+
+[node name="FadeIn" parent="TitleScreen" instance=ExtResource( 8 )]
+visible = false
