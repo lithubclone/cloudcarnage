@@ -9,6 +9,6 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	$MarginContainer/HSplitContainer/Label0.text = "Blue: "+str(global.score0)
-	$MarginContainer/HSplitContainer/Label1.text = "Red: "+str(global.score1)
+	$MarginContainer/HSplitContainer/Label0.text = "Blue: "+str(global.score[0])
+	$MarginContainer/HSplitContainer/Label1.text = "Red: "+str(global.score[1])
 	pass
