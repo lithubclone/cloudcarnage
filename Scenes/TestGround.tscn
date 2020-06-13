@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Sprites/Environment/Tilesets/TileMap.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Objects/Player/Player0.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Objects/Player/Player1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Objects/HUD.tscn" type="PackedScene" id=4]
 
 [node name="TestGround" type="Node2D"]
 
@@ -29,3 +30,5 @@ position = Vector2( 730, 280 )
 
 [node name="Spawn3" type="Position2D" parent="."]
 position = Vector2( 510, 130 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]

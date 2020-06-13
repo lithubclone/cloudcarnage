@@ -1,20 +1,20 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Scripts/Player1.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Player1/idle/Player1Idle1.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Player1/idle/Player1Idle2.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Player1/idle/Player1Idle3.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Player1/idle/Player1Idle4.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Player1/idle/Player1Idle5.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Player1B/idle/Player1Idle1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Player1B/idle/Player1Idle2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Player1B/idle/Player1Idle3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Player1B/idle/Player1Idle4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Player1B/idle/Player1Idle5.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Player1/jumpUp/Player1JU1.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/Player1/jumpUp/Player1JU2.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Player1/jumpDown/Player1JD1.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/Player1/jumpDown/Player1JD2.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Sprites/Player1/run/Player1Run1.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Sprites/Player1/run/Player1Run2.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sprites/Player1/run/Player1Run3.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Sprites/Player1/run/Player1Run4.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Sprites/Player1/wall/Player1wall.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Player1B/jumpDown/Player1JD1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Player1B/jumpDown/Player1JD2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Player1B/run/Player1Run1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Player1B/run/Player1Run2.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Player1B/run/Player1Run3.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Player1B/run/Player1Run4.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Player1B/wall/Player1wall.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -58,6 +58,7 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
