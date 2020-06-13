@@ -13,10 +13,10 @@ extends Control
 #	get_tree().change_scene(scene_to_load)
 
 func _on_NewGameButton_pressed():
-	get_tree().change_scene($Menu/CenterRow/Buttons/NewGameButton.scene_to_load)
+	get_tree().change_scene("res://Scenes/Game/NewGame.tscn")
 
 func _on_ContinueButton_pressed():
-	get_tree().change_scene($Menu/CenterRow/Buttons/ContinueButton.scene_to_load)
+	get_tree().change_scene("res://Scenes/Game/Continue.tscn")
 
 func _on_OptionsButton_pressed():
-	get_tree().change_scene($Menu/CenterRow/Buttons/OptionsButton.scene_to_load)
+	get_tree().change_scene("res://Scenes/Game/Options.tscn")
