@@ -3,22 +3,30 @@ extends Control
 onready var soundNo = $AudioNo
 onready var soundYes = $AudioYes
 var scene
-onready var option1 = $TopContainer/HBoxContainer/VBoxContainer1/OptionButton1
-onready var option2 = $TopContainer/HBoxContainer/VBoxContainer2/OptionButton2
-onready var option3 = $TopContainer/HBoxContainer/VBoxContainer3/OptionButton3
+
+#Player1
+onready var option11 = $TopContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1/OptionButton1
+onready var option12 = $TopContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton2
+onready var option13 = $TopContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/OptionButton3
+#Player2
+onready var option21 = $TopContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer1/OptionButton1
+onready var option22 = $TopContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/OptionButton2
+onready var option23 = $TopContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3/OptionButton3
+#Items
+
 
 func _ready():
-	option1.add_item("Fire", 1)
-	option1.add_item("Water", 2)
-	option1.add_item("Earth", 3)
+	option11.add_item("Fire", 1)
+	option11.add_item("Water", 2)
+	option11.add_item("Earth", 3)
 	
-	option2.add_item("Pistol", 1)
-	option2.add_item("Colt", 2)
-	option2.add_item("Airsoft", 3)
+	option12.add_item("Pistol", 1)
+	option12.add_item("Colt", 2)
+	option12.add_item("Airsoft", 3)
 	
-	option3.add_item("Magic Bullet", 1)
-	option3.add_item("Rocket", 2)
-	option3.add_item("Mine", 3)
+	option13.add_item("Magic Bullet", 1)
+	option13.add_item("Rocket", 2)
+	option13.add_item("Mine", 3)
 
 func _on_Back_pressed():
 	soundNo.play()
