@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Sprites/Environment/Tilesets/Tiles.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Objects/Player/Player0.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sprites/Flames/Flame.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -237,3 +238,6 @@ position = Vector2( 440, 240 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 350, 240 )
