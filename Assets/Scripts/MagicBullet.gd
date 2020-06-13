@@ -1,16 +1,17 @@
 extends Node2D
 
-var speed = 200
+var speed = 800
 var angle = 0
 var timer = 10
 var dmg = 10
-var motion = Vector2()
+var motion = Vector2(1,0)
 
 func setDirSimple(var dir):
 	if dir == 1:
-		speed = abs(speed)
-	else:
 		speed = -abs(speed)
+	else:
+		speed = abs(speed)
+	
 
 func setDir(var v):
 	motion = v

@@ -21,7 +21,7 @@ func _physics_process(delta):
 	
 	$Sprite.flip_h = get_parent().get_parent().flip
 	
-	if Input.is_action_pressed("ui_select") && reload <= 0:
+	if (abs(Input.get_joy_axis(0,JOY_AXIS_2)) > 0.5 or abs(Input.get_joy_axis(0,JOY_AXIS_3)) > 0.5)  && reload <= 0:
 		#get_parent().get_parent().get_parent().get_node("ScreenShake").shake(7,0.5)
 		reload = COOLDOWN;
 		$Audio.play()
@@ -30,7 +30,18 @@ func _physics_process(delta):
 		projectile.position = $Position2D.global_position;
 		#if $Sprite.flip_h == true:
 			#projectile.set_dir(-1)
-		projectile.setDir(Vector2(Input.get_joy_axis(0, JOY_AXIS_2),Input.get_joy_axis(0, JOY_AXIS_3))) #analog stick axis to vector
+		projectile.setDir(Vector2(Input.get_joy_axis(0, JOY_AXIS_2),Input.get_joy_axis(0, JOY_AXIS_3)).normalized())
+	elif (Input.is_action_pressed("shoot0") && reload <= 0):
+		reload = COOLDOWN;
+		$Audio.play()
+		var projectile = PROJECTILE.instance();
+		get_parent().get_parent().get_parent().add_child(projectile)
+		projectile.position = $Position2D.global_position;
+		if $Sprite.flip_h == true:
+			projectile.setDirSimple(-1)
+		else:
+			projectile.setDirSimple(1)
+
 	
 	if Input.is_action_pressed("ui_right"):
 		if sign($Position2D.position.x) == -1:
