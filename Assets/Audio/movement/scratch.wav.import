@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/step5.wav-685a2616e5c9858e3a1e1369e3bdf063.sample"
+path="res://.import/scratch.wav-ad01e94fde476760cf5446f94613e301.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/movement/step5.wav"
-dest_files=[ "res://.import/step5.wav-685a2616e5c9858e3a1e1369e3bdf063.sample" ]
+source_file="res://Assets/Audio/movement/scratch.wav"
+dest_files=[ "res://.import/scratch.wav-ad01e94fde476760cf5446f94613e301.sample" ]
 
 [params]
 

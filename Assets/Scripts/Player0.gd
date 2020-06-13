@@ -20,6 +20,7 @@ var killerNum
 
 var spawnPoints
 
+var playerNum = 0
 
 func _ready():
 	WEAPON = global.weapon0;
@@ -140,7 +141,8 @@ func _physics_process(delta):
 
 func _on_Hitbox_area_entered(area):
 	if area.get_collision_layer_bit(2):
-		hp -= area.get_parent().dmg
-		print("Pl0 Hit!"+" HP: "+String(hp))
-		area.get_parent().queue_free()
+		if area.get_parent().getUserNum() != playerNum:
+			hp -= area.get_parent().dmg
+			print("Pl0 Hit!"+" HP: "+String(hp))
+			area.get_parent().queue_free()
 	pass # Replace with function body.
