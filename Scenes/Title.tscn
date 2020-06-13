@@ -83,4 +83,3 @@ valign = 1
 
 [node name="FadeIn" parent="TitleScreen" instance=ExtResource( 8 )]
 visible = false
-[connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/NewGameButton" to="TitleScreen" method="_on_NewGameButton_pressed"]
