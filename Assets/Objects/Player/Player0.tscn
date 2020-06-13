@@ -30,7 +30,7 @@
 [ext_resource path="res://Assets/Sprites/Player0/jumpUp/Player0JU1.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Sprites/Player0/jumpUp/Player0JU2.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Audio/movement/jump.wav" type="AudioStream" id=30]
-[ext_resource path="res://Assets/Audio/movement/scratch.wav" type="AudioStream" id=31]
+[ext_resource path="res://Assets/Audio/movement/wallslide.wav" type="AudioStream" id=31]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -99,7 +99,6 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle0"
-frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -119,7 +118,9 @@ shape = SubResource( 3 )
 stream = ExtResource( 30 )
 volume_db = -8.722
 
-[node name="AudioWall" type="AudioStreamPlayer" parent="."]
+[node name="AudioWallslide" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 31 )
-volume_db = -16.824
+volume_db = -13.001
+
+[node name="AudioStep" type="AudioStreamPlayer" parent="."]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

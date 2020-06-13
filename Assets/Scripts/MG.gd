@@ -2,7 +2,7 @@ extends Node2D
 
 const PROJECTILE = preload("res://Assets/Objects/Projectiles/MagicBullet.tscn")
 
-const COOLDOWN = 0.3;
+const COOLDOWN = 0.1;
 var reload = 0;
 
 var input = ["shoot0", "right0", "left0"]
@@ -40,7 +40,7 @@ func _physics_process(delta):
 		projectile.setUserNum(get_parent().get_parent().getPlayerNum())
 		#if $Sprite.flip_h == true:
 			#projectile.set_dir(-1)
-		projectile.dmgMod(1)
+		projectile.dmgMod(0.6)
 		projectile.setDir(Vector2(Input.get_joy_axis(playerNum, JOY_AXIS_2),Input.get_joy_axis(playerNum, JOY_AXIS_3)).normalized())
 	elif (Input.is_action_pressed(input[0]) && reload <= 0):
 		reload = COOLDOWN;
@@ -49,7 +49,7 @@ func _physics_process(delta):
 		get_parent().get_parent().get_parent().add_child(projectile)
 		projectile.position = $Position2D.global_position;
 		projectile.setUserNum(get_parent().get_parent().getPlayerNum())
-		projectile.dmgMod(1)
+		projectile.dmgMod(0.6)
 		if $Sprite.flip_h == true:
 			projectile.setDirSimple(-1)
 		else:

@@ -14,6 +14,7 @@ var friction = false; #friction
 var flip = false;  ###maybe for weapons? extra object?
 var jumpforce = 0; #variable. jumpforce should be dynamically decreased by GRAVITY
 #var dead = false;
+const steps = [preload("res://Assets/Audio/movement/step5.wav"),preload("res://Assets/Audio/movement/step1.wav"),preload("res://Assets/Audio/movement/step2.wav"),preload("res://Assets/Audio/movement/step3.wav")]
 
 var hp = 100
 var killerNum
@@ -101,7 +102,13 @@ func _physics_process(delta):
 	
 	
 	move()
+	
 	if is_on_floor():
+		if (Input.is_action_pressed(input[1]) or Input.is_action_pressed(input[2])):
+			if !$AudioStep.playing:
+				$AudioStep.stream = steps[randi()%4]
+				$AudioStep.play()
+		
 		if Input.is_action_just_pressed(input[3]):
 			$AudioJump.play()
 			jumpforce = -40
@@ -109,6 +116,7 @@ func _physics_process(delta):
 		if friction == true:
 			motion.x = lerp(motion.x,0,0.3)
 	else:
+		$AudioStep.stop()
 		if Input.is_action_pressed(input[3]):
 			motion.y += jumpforce
 		jumpforce = lerp(jumpforce, 0, 0.1)
@@ -123,8 +131,8 @@ func _physics_process(delta):
 	
 	if is_on_wall() and !is_on_floor(): #and !Input.is_action_pressed("ui_accept"):  #wall jump stuff. maybe climbing stuff as well. code not stuff. sorry
 		motion.y = 100
-		if !$AudioWall.playing:
-			$AudioWall.play()
+		if !$AudioWallslide.playing:
+			$AudioWallslide.play()
 		$AnimatedSprite.play(sprites[4])
 		weapon.enable(false)
 		if flip == true:
@@ -137,7 +145,7 @@ func _physics_process(delta):
 				motion.x = SPEED*1.8
 	else: 
 		weapon.enable(true)
-		$AudioWall.stop()
+		$AudioWallslide.stop()
 	
 	if is_on_ceiling():
 		motion.y += -JUMPFORCE/3
