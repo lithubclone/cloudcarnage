@@ -1,17 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Sprites/Environment/Tilesets/TileMap.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Objects/Player/Player0.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Title/Buttons/magic_36.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Audio/control/no.wav" type="AudioStream" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
+
+onready var sound = $AudioStreamPlayer
+var scene
 
 func _input(event):
 	if event.is_action_pressed(\"pause\"):
 		var new_pause_state = not get_tree().paused
 		get_tree().paused = new_pause_state
-		visible = new_pause_state"
+		visible = new_pause_state
+
+func _on_Menu_pressed():
+	sound.play()
+	scene = \"res://Scenes/Title.tscn\"
+	get_tree().paused = false
+	visible = false
+
+func _on_AudioStreamPlayer_finished():
+	get_tree().change_scene(scene)
+"
 
 [node name="Arena" type="Node2D"]
 
@@ -39,25 +53,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.25098 )
 
-[node name="Pause" type="Label" parent="CanvasLayer/Pause"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+alignment = 1
+
+[node name="Pause" type="Label" parent="CanvasLayer/Pause/VBoxContainer"]
+margin_top = 238.0
+margin_right = 1024.0
+margin_bottom = 274.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
 text = "Paused"
 align = 1
 valign = 1
 
-[node name="Note" type="Label" parent="CanvasLayer/Pause"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -512.0
-margin_top = -576.0
-margin_right = 512.0
+[node name="Note" type="Label" parent="CanvasLayer/Pause/VBoxContainer"]
+margin_top = 278.0
+margin_right = 1024.0
+margin_bottom = 314.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
 text = "Press Escape or P"
 align = 1
 valign = 2
+
+[node name="Menu" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+margin_top = 318.0
+margin_right = 1024.0
+margin_bottom = 338.0
+size_flags_horizontal = 3
+text = "Back to Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Pause"]
+stream = ExtResource( 4 )
+volume_db = -30.0
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Menu" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
+[connection signal="finished" from="CanvasLayer/Pause/AudioStreamPlayer" to="CanvasLayer/Pause" method="_on_AudioStreamPlayer_finished"]

@@ -1,10 +1,20 @@
 extends Control
 
+onready var sound = $AudioSelection
+var scene
+
 func _on_NewGameButton_pressed():
-	get_tree().change_scene("res://Scenes/Arena.tscn")
+	sound.play()
+	scene = "res://Scenes/Arena.tscn"
 
 func _on_ContinueButton_pressed():
-	get_tree().change_scene("res://Scenes/Game/Continue.tscn")
+	sound.play()
+	scene = "res://Scenes/Game/Continue.tscn"
 
 func _on_OptionsButton_pressed():
-	get_tree().change_scene("res://Scenes/Game/Options.tscn")
+	sound.play()
+	scene = "res://Scenes/Game/Options.tscn"
+
+
+func _on_AudioSelection_finished():
+	get_tree().change_scene(scene)

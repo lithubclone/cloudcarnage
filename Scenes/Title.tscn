@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Title/Buttons/OptionsButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Sprites/Player0/idle/Player0Idle1.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Title/Buttons/magic_16.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Assets/Audio/control/selection.wav" type="AudioStream" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -73,6 +74,7 @@ margin_top = 81.0
 margin_right = 260.0
 margin_bottom = 113.0
 texture = ExtResource( 6 )
+stretch_mode = 4
 
 [node name="VersionLabel" type="Label" parent="TitleScreen/Menu"]
 margin_top = 371.0
@@ -83,7 +85,11 @@ custom_fonts/font = ExtResource( 7 )
 text = "Version 0.1.1
 Team11 Null"
 align = 2
-valign = 1
+valign = 2
+
+[node name="AudioSelection" type="AudioStreamPlayer" parent="TitleScreen"]
+stream = ExtResource( 8 )
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/NewGameButton" to="TitleScreen" method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/ContinueButton" to="TitleScreen" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/OptionsButton" to="TitleScreen" method="_on_OptionsButton_pressed"]
+[connection signal="finished" from="TitleScreen/AudioSelection" to="TitleScreen" method="_on_AudioSelection_finished"]
