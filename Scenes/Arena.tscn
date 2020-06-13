@@ -1,10 +1,54 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Sprites/Environment/Tilesets/TileMap.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Title/Buttons/magic_36.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Audio/control/no.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Objects/Player/Player0.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Objects/Player/Player1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Objects/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Audio/music/ambient_office_spice0.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Audio/music/ambient_office_spice1.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Audio/music/ambient_office_spice2.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Audio/music/ambient_office_spice3.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Audio/music/ambient_office_spice4.wav" type="AudioStream" id=11]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+onready var s = [$AudioBackground0, $AudioBackground1,$AudioBackground2, $AudioBackground3,$AudioBackground4]
+var r = randi()%4
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	s[r].play()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_AudioBackground0_finished():
+	r = rand_range(0,4)
+	s[r].play()
+
+func _on_AudioBackground1_finished():
+	r = rand_range(0,4)
+	s[r].play()
+
+func _on_AudioBackground2_finished():
+	r = rand_range(0,4)
+	s[r].play()
+
+func _on_AudioBackground3_finished():
+	r = rand_range(0,4)
+	s[r].play()
+
+func _on_AudioBackground4_finished():
+	r = rand_range(0,4)
+	s[r].play()"
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -29,6 +73,7 @@ func _on_AudioStreamPlayer_finished():
 "
 
 [node name="Arena" type="Node2D"]
+script = SubResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -105,5 +150,32 @@ position = Vector2( 400, 330 )
 
 [node name="Player1" parent="." instance=ExtResource( 5 )]
 position = Vector2( 630, 330 )
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
+
+[node name="AudioBackground0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -25.0
+
+[node name="AudioBackground1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -25.0
+
+[node name="AudioBackground2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -25.0
+
+[node name="AudioBackground3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -25.0
+
+[node name="AudioBackground4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -25.0
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Menu" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
 [connection signal="finished" from="CanvasLayer/Pause/AudioStreamPlayer" to="CanvasLayer/Pause" method="_on_AudioStreamPlayer_finished"]
+[connection signal="finished" from="AudioBackground0" to="." method="_on_AudioBackground0_finished"]
+[connection signal="finished" from="AudioBackground1" to="." method="_on_AudioBackground1_finished"]
+[connection signal="finished" from="AudioBackground2" to="." method="_on_AudioBackground2_finished"]
+[connection signal="finished" from="AudioBackground3" to="." method="_on_AudioBackground3_finished"]
+[connection signal="finished" from="AudioBackground4" to="." method="_on_AudioBackground4_finished"]
