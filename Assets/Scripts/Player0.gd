@@ -17,38 +17,47 @@ var jumpforce = 0; #variable. jumpforce should be dynamically decreased by GRAVI
 
 var hp = 100
 var killerNum
-
 var spawnPoints
-
-var playerNum = 0
+export var playerNum = 0
+var input
+var sprites
 
 func _ready():
 	WEAPON = global.weapon0;
 	#iNiTiAlIsIeRe deinen Shit hier!!
 	weapon = WEAPON.instance()
 	$GunPosition.add_child(weapon)
+	
+	if playerNum == 0:
+		input = global.input0
+		sprites = global.sprites0
+	elif playerNum == 1:
+		input = global.input1
+		sprites = global.sprites1
 	#weapon.position = $GunPosition.position
 	spawnPoints = [get_parent().get_node("Spawn0"),get_parent().get_node("Spawn1"),get_parent().get_node("Spawn2"),get_parent().get_node("Spawn3")]
 	
 	pass
 
 func getPlayerNum():
-	return 0
+	return playerNum
 
 func death():
 	hp = 100
 	
 	if killerNum == 0:
-		global.score0+=1
+		global.score[0]+=1
 	elif killerNum == 1:
-		global.score1+=1
+		global.score[1]+=1
 	elif killerNum == 2:
-		global.score2 += 1
+		global.score[2] += 1
 	elif killerNum == 3:
-		global.score3+=1
+		global.score[3]+=1
 		
 	var spawnNum = randi()%4
 	position = spawnPoints[spawnNum].position
+	
+	
 	
 
 func move():
@@ -56,29 +65,29 @@ func move():
 	#sprite speed scale
 	$AnimatedSprite.speed_scale = 1   #using input strength animation speed can be regulated. see note 1
 	
-	if Input.is_action_pressed("right0"):
+	if Input.is_action_pressed(input[1]):
 		flip = true
 		if sign($GunPosition.position.x) == -1:
 			$GunPosition.position.x *= -1;
 			
-		motion.x = min(motion.x+ACCELERATION, SPEED)*Input.get_action_strength("right0") #note 1
+		motion.x = min(motion.x+ACCELERATION, SPEED)*Input.get_action_strength(input[1]) #note 1
 		if is_on_floor():
-			$AnimatedSprite.play("run")#walk
-			$AnimatedSprite.speed_scale = Input.get_action_strength("right0")
+			$AnimatedSprite.play(sprites[1])#walk
+			$AnimatedSprite.speed_scale = Input.get_action_strength(input[1])
 		$AnimatedSprite.flip_h = 1
-	elif Input.is_action_pressed("left0"):
+	elif Input.is_action_pressed(input[2]):
 		flip = false
 		if sign($GunPosition.position.x) == +1:
 			$GunPosition.position.x *= -1;
 			
-		motion.x = max(motion.x-ACCELERATION, -SPEED)*Input.get_action_strength("left0") # note 1
+		motion.x = max(motion.x-ACCELERATION, -SPEED)*Input.get_action_strength(input[2]) # note 1
 		if is_on_floor():
-			$AnimatedSprite.play("run")#walk
-			$AnimatedSprite.speed_scale = Input.get_action_strength("left0")
+			$AnimatedSprite.play(sprites[1])#walk
+			$AnimatedSprite.speed_scale = Input.get_action_strength(input[2])
 		$AnimatedSprite.flip_h = 0
 	else:
 		friction = true
-		$AnimatedSprite.play("idle")
+		$AnimatedSprite.play(sprites[0])
 	pass
 	
 func _physics_process(delta):
@@ -93,38 +102,42 @@ func _physics_process(delta):
 	
 	move()
 	if is_on_floor():
-		if Input.is_action_just_pressed("jump0"):
+		if Input.is_action_just_pressed(input[3]):
+			$AudioJump.play()
 			jumpforce = -40
 			motion.y = JUMPFORCE
 		if friction == true:
 			motion.x = lerp(motion.x,0,0.3)
 	else:
-		if Input.is_action_pressed("jump0"):
+		if Input.is_action_pressed(input[3]):
 			motion.y += jumpforce
 		jumpforce = lerp(jumpforce, 0, 0.1)
 		if friction == true:
 			motion.x = lerp(motion.x,0,0.1)
 		if motion.y < 0:
-			$AnimatedSprite.play("jumpUp")
+			$AnimatedSprite.play(sprites[2])
 			
 		if motion.y > 0:
-			$AnimatedSprite.play("jumpDown")
+			$AnimatedSprite.play(sprites[3])
 	
 	
 	if is_on_wall() and !is_on_floor(): #and !Input.is_action_pressed("ui_accept"):  #wall jump stuff. maybe climbing stuff as well. code not stuff. sorry
 		motion.y = 100
-		$AnimatedSprite.play("wall")
+		if !$AudioWall.playing:
+			$AudioWall.play()
+		$AnimatedSprite.play(sprites[4])
 		weapon.enable(false)
 		if flip == true:
-			if Input.is_action_just_pressed("jump0") and Input.is_action_pressed("right0"):
+			if Input.is_action_just_pressed(input[3]) and Input.is_action_pressed(input[1]):
 				motion.y = JUMPFORCE*1.5
 				motion.x = -SPEED*1.8
 		else:
-			if Input.is_action_just_pressed("jump0") and Input.is_action_pressed("left0"):
+			if Input.is_action_just_pressed(input[3]) and Input.is_action_pressed(input[2]):
 				motion.y = JUMPFORCE*1.5
 				motion.x = SPEED*1.8
 	else: 
 		weapon.enable(true)
+		$AudioWall.stop()
 	
 	if is_on_ceiling():
 		motion.y += -JUMPFORCE/3
