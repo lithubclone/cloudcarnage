@@ -15,6 +15,10 @@ var flip = false;  ###maybe for weapons? extra object?
 var jumpforce = 0; #variable. jumpforce should be dynamically decreased by GRAVITY
 #var dead = false;
 
+var hp = 100
+var killerNum
+
+var spawnPoints
 
 func _ready():
 	WEAPON = global.weapon0;
@@ -22,10 +26,26 @@ func _ready():
 	weapon = WEAPON.instance()
 	$GunPosition.add_child(weapon)
 	#weapon.position = $GunPosition.position
+	spawnPoints = [get_parent().get_node("Spawn0"),get_parent().get_node("Spawn1"),get_parent().get_node("Spawn2"),get_parent().get_node("Spawn3")]
 	pass
 
 func getPlayerNum():
 	return 1
+
+func death():
+	hp = 100
+	
+	if killerNum == 0:
+		global.score0+=1
+	elif killerNum == 1:
+		global.score1+=1
+	elif killerNum == 2:
+		global.score2 += 1
+	elif killerNum == 3:
+		global.score3+=1
+		
+	var spawnNum = randi()%4
+	position = spawnPoints[spawnNum].position
 
 func move():
 	
@@ -36,7 +56,7 @@ func move():
 		flip = true
 		if sign($GunPosition.position.x) == -1:
 			$GunPosition.position.x *= -1;
-			print($GunPosition.position.x)
+			
 		motion.x = min(motion.x+ACCELERATION, SPEED)*Input.get_action_strength("right1") #note 1
 		if is_on_floor():
 			$AnimatedSprite.play("run")#walk
@@ -46,7 +66,7 @@ func move():
 		flip = false
 		if sign($GunPosition.position.x) == +1:
 			$GunPosition.position.x *= -1;
-			print($GunPosition.position.x)
+			
 		motion.x = max(motion.x-ACCELERATION, -SPEED)*Input.get_action_strength("left1") # note 1
 		if is_on_floor():
 			$AnimatedSprite.play("run")#walk
@@ -62,7 +82,8 @@ func _physics_process(delta):
 	motion.y += GRAVITY #Grtavity n sSIOHTiukswareh ölotis
 	motion.y = min(motion.y, 800)	
 	
-	
+	if hp <= 0:
+		death()
 	
 	move()
 	if is_on_floor():
@@ -110,3 +131,11 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, UP) # move and slide BITCH
 	
 	pass
+
+
+func _on_Hitbox_area_entered(area):
+	if area.get_collision_layer_bit(2):
+		hp -= area.get_parent().dmg
+		print("Pl1 Hit!"+" HP: "+String(hp))
+		area.get_parent().queue_free()
+	pass # Replace with function body.

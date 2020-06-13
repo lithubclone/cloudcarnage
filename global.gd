@@ -21,7 +21,10 @@ var weapon3
 var projectile3
 var element3
 
-
+var score0
+var score1
+var score2
+var score3
 
 func _ready():
 	pass # Replace with function body.

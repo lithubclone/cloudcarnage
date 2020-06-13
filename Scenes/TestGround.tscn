@@ -17,3 +17,15 @@ position = Vector2( 440, 240 )
 
 [node name="Player1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 120, 244 )
+
+[node name="Spawn0" type="Position2D" parent="."]
+position = Vector2( 370, 140 )
+
+[node name="Spawn1" type="Position2D" parent="."]
+position = Vector2( 170, 140 )
+
+[node name="Spawn2" type="Position2D" parent="."]
+position = Vector2( 730, 280 )
+
+[node name="Spawn3" type="Position2D" parent="."]
+position = Vector2( 510, 130 )

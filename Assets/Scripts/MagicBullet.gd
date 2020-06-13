@@ -5,6 +5,13 @@ var angle = 0
 var timer = 10
 var dmg = 10
 var motion = Vector2(1,0)
+var userNum
+
+func setUserNum(var n):
+	userNum = n
+
+func getUserNum():
+	return userNum
 
 func setDirSimple(var dir):
 	if dir == 1:
