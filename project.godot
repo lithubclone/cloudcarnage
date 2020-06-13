@@ -19,6 +19,10 @@ config/name="CloudCarnage"
 run/main_scene="res://Scenes/TestGround.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://global.gd"
+
 [display]
 
 window/size/height=576

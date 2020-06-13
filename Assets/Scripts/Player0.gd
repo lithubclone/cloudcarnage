@@ -6,6 +6,8 @@ const ACCELERATION = 110; #maximum acceleration
 const JUMPFORCE = -550; #maximum jump force. negative because up is negative
 const GRAVITY = 27; #personalized player gravity. N SHIT
 
+var WEAPON #pseudo-constante  WORKAROUND FFFFUCKERS
+var weapon
 var motion = Vector2(); #motion vector which determines player move direction. used in func "move_in_slide()"
 var friction = false; #friction
 #steptimer?
@@ -13,8 +15,13 @@ var flip = false;  ###maybe for weapons? extra object?
 var jumpforce = 0; #variable. jumpforce should be dynamically decreased by GRAVITY
 #var dead = false;
 
+
 func _ready():
+	WEAPON = global.weapon0;
 	#iNiTiAlIsIeRe deinen Shit hier!!
+	weapon = WEAPON.instance()
+	$GunPosition.add_child(weapon)
+	#weapon.position = $GunPosition.position
 	pass
 
 func move():
@@ -24,16 +31,20 @@ func move():
 	
 	if Input.is_action_pressed("ui_right"):
 		flip = true
-		$GunPosition.position.x *= -1
-		motion.x = min(motion.x+ACCELERATION, SPEED)#*Input.get_action_strength("ui_right") #note 1
+		if sign($GunPosition.position.x) == -1:
+			$GunPosition.position.x *= -1;
+			print($GunPosition.position.x)
+		motion.x = min(motion.x+ACCELERATION, SPEED)*Input.get_action_strength("ui_right") #note 1
 		if is_on_floor():
 			$AnimatedSprite.play("run")#walk
 			$AnimatedSprite.speed_scale = Input.get_action_strength("ui_right")
 		$AnimatedSprite.flip_h = 1
 	elif Input.is_action_pressed("ui_left"):
 		flip = false
-		$GunPosition.position.x *= -1
-		motion.x = max(motion.x-ACCELERATION, -SPEED)#*Input.get_action_strength("ui_left") # note 1
+		if sign($GunPosition.position.x) == +1:
+			$GunPosition.position.x *= -1;
+			print($GunPosition.position.x)
+		motion.x = max(motion.x-ACCELERATION, -SPEED)*Input.get_action_strength("ui_left") # note 1
 		if is_on_floor():
 			$AnimatedSprite.play("run")#walk
 			$AnimatedSprite.speed_scale = Input.get_action_strength("ui_left")
@@ -70,9 +81,10 @@ func _physics_process(delta):
 			$AnimatedSprite.play("jumpDown")
 	
 	
-	if is_on_wall() and !is_on_floor():  #wall jump stuff. maybe climbing stuff as well. code not stuff. sorry
+	if is_on_wall() and !is_on_floor(): #and !Input.is_action_pressed("ui_accept"):  #wall jump stuff. maybe climbing stuff as well. code not stuff. sorry
 		motion.y = 100
 		$AnimatedSprite.play("wall")
+		weapon.enable(false)
 		if flip == true:
 			if Input.is_action_just_pressed("ui_accept") and Input.is_action_pressed("ui_right"):
 				motion.y = JUMPFORCE*1.5
@@ -81,6 +93,8 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("ui_accept") and Input.is_action_pressed("ui_left"):
 				motion.y = JUMPFORCE*1.5
 				motion.x = SPEED*1.8
+	else: 
+		weapon.enable(true)
 	
 	if is_on_ceiling():
 		motion.y += -JUMPFORCE/3
