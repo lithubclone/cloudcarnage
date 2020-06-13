@@ -72,6 +72,7 @@ func _physics_process(delta):
 	
 	if is_on_wall() and !is_on_floor():  #wall jump stuff. maybe climbing stuff as well. code not stuff. sorry
 		motion.y = 100
+		$AnimatedSprite.play("wall")
 		if flip == true:
 			if Input.is_action_just_pressed("ui_accept") and Input.is_action_pressed("ui_right"):
 				motion.y = JUMPFORCE*1.5
