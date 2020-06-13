@@ -14,9 +14,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 369.0
-margin_top = 246.0
+margin_top = 258.0
 margin_right = 654.0
-margin_bottom = 330.0
+margin_bottom = 318.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 285.0
@@ -31,11 +31,4 @@ margin_top = 40.0
 margin_right = 285.0
 margin_bottom = 60.0
 text = "Back"
-
-[node name="Test" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 64.0
-margin_right = 285.0
-margin_bottom = 84.0
-text = "TestGround"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Test" to="." method="_on_Test_pressed"]
