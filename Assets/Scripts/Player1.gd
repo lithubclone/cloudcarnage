@@ -18,6 +18,8 @@ var jumpforce = 0; #variable. jumpforce should be dynamically decreased by GRAVI
 var hp = 100
 var killerNum
 
+var playerNum = 1
+
 var spawnPoints
 
 func _ready():
@@ -135,7 +137,9 @@ func _physics_process(delta):
 
 func _on_Hitbox_area_entered(area):
 	if area.get_collision_layer_bit(2):
-		hp -= area.get_parent().dmg
-		print("Pl1 Hit!"+" HP: "+String(hp))
-		area.get_parent().queue_free()
+		if area.get_parent().getUserNum() != playerNum:
+			killerNum = area.get_parent().getUserNum()
+			hp -= area.get_parent().dmg
+			print("Pl0 Hit!"+" HP: "+str(hp))
+			area.get_parent().queue_free()
 	pass # Replace with function body.

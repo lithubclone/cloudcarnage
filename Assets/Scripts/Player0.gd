@@ -142,7 +142,8 @@ func _physics_process(delta):
 func _on_Hitbox_area_entered(area):
 	if area.get_collision_layer_bit(2):
 		if area.get_parent().getUserNum() != playerNum:
+			killerNum = area.get_parent().getUserNum()
 			hp -= area.get_parent().dmg
-			print("Pl0 Hit!"+" HP: "+String(hp))
+			print("Pl0 Hit!"+" HP: "+str(hp))
 			area.get_parent().queue_free()
 	pass # Replace with function body.
