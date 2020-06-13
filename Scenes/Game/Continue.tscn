@@ -14,3 +14,6 @@ text = "Continue Scene"
 
 [node name="Button" parent="CenterContainer/VBoxContainer" index="1"]
 margin_right = 245.0
+
+[node name="Test" parent="CenterContainer/VBoxContainer" index="2"]
+margin_right = 245.0
