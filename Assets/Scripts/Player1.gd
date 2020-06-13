@@ -25,32 +25,32 @@ func _ready():
 	pass
 
 func getPlayerNum():
-	return 0
+	return 1
 
 func move():
 	
 	#sprite speed scale
 	$AnimatedSprite.speed_scale = 1   #using input strength animation speed can be regulated. see note 1
 	
-	if Input.is_action_pressed("right0"):
+	if Input.is_action_pressed("right1"):
 		flip = true
 		if sign($GunPosition.position.x) == -1:
 			$GunPosition.position.x *= -1;
 			print($GunPosition.position.x)
-		motion.x = min(motion.x+ACCELERATION, SPEED)*Input.get_action_strength("right0") #note 1
+		motion.x = min(motion.x+ACCELERATION, SPEED)*Input.get_action_strength("right1") #note 1
 		if is_on_floor():
 			$AnimatedSprite.play("run")#walk
-			$AnimatedSprite.speed_scale = Input.get_action_strength("right0")
+			$AnimatedSprite.speed_scale = Input.get_action_strength("right1")
 		$AnimatedSprite.flip_h = 1
-	elif Input.is_action_pressed("left0"):
+	elif Input.is_action_pressed("left1"):
 		flip = false
 		if sign($GunPosition.position.x) == +1:
 			$GunPosition.position.x *= -1;
 			print($GunPosition.position.x)
-		motion.x = max(motion.x-ACCELERATION, -SPEED)*Input.get_action_strength("left0") # note 1
+		motion.x = max(motion.x-ACCELERATION, -SPEED)*Input.get_action_strength("left1") # note 1
 		if is_on_floor():
 			$AnimatedSprite.play("run")#walk
-			$AnimatedSprite.speed_scale = Input.get_action_strength("left0")
+			$AnimatedSprite.speed_scale = Input.get_action_strength("left1")
 		$AnimatedSprite.flip_h = 0
 	else:
 		friction = true
@@ -66,13 +66,13 @@ func _physics_process(delta):
 	
 	move()
 	if is_on_floor():
-		if Input.is_action_just_pressed("jump0"):
+		if Input.is_action_just_pressed("jump1"):
 			jumpforce = -40
 			motion.y = JUMPFORCE
 		if friction == true:
 			motion.x = lerp(motion.x,0,0.3)
 	else:
-		if Input.is_action_pressed("jump0"):
+		if Input.is_action_pressed("jump1"):
 			motion.y += jumpforce
 		jumpforce = lerp(jumpforce, 0, 0.1)
 		if friction == true:
@@ -89,11 +89,11 @@ func _physics_process(delta):
 		$AnimatedSprite.play("wall")
 		weapon.enable(false)
 		if flip == true:
-			if Input.is_action_just_pressed("jump0") and Input.is_action_pressed("right0"):
+			if Input.is_action_just_pressed("jump1") and Input.is_action_pressed("right1"):
 				motion.y = JUMPFORCE*1.5
 				motion.x = -SPEED*1.8
 		else:
-			if Input.is_action_just_pressed("jump0") and Input.is_action_pressed("left0"):
+			if Input.is_action_just_pressed("jump1") and Input.is_action_pressed("left1"):
 				motion.y = JUMPFORCE*1.5
 				motion.x = SPEED*1.8
 	else: 
