@@ -43,7 +43,7 @@ func move():
 func _physics_process(delta):
 	
 	motion.y += GRAVITY #Grtavity n sSIOHTiukswareh ölotis
-	motion.y = min(motion.y, 600)	
+	motion.y = min(motion.y, 800)	
 	
 	move()
 	if is_on_floor():
@@ -64,6 +64,7 @@ func _physics_process(delta):
 		if motion.y > 0:
 			$AnimatedSprite.play("idle")
 	
+	
 	if is_on_wall() and !is_on_floor():  #wall jump stuff. maybe climbing stuff as well. code not stuff. sorry
 		motion.y = 100
 		if flip == true:
@@ -76,7 +77,8 @@ func _physics_process(delta):
 				motion.x = SPEED*1.8
 	
 	if is_on_ceiling():
-		motion.y = -motion.y
+		motion.y += -JUMPFORCE/3
+	
 	
 	friction = false  #FRICTION! Lets Grind baby
 	
