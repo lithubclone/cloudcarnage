@@ -4,11 +4,17 @@
 
 [node name="Options" instance=ExtResource( 1 )]
 
+[node name="CenterContainer" parent="." index="0"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -512.0
+margin_right = 512.0
+margin_bottom = 576.0
+
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
 margin_left = 403.0
-margin_top = 246.0
 margin_right = 620.0
-margin_bottom = 330.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 217.0
@@ -17,5 +23,33 @@ text = "Options Scene"
 [node name="Button" parent="CenterContainer/VBoxContainer" index="1"]
 margin_right = 217.0
 
-[node name="Test" parent="CenterContainer/VBoxContainer" index="2"]
-margin_right = 217.0
+[node name="TopContainer" type="CenterContainer" parent="." index="1"]
+anchor_right = 1.0
+margin_bottom = 230.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopContainer" index="0"]
+margin_left = 371.0
+margin_top = 105.0
+margin_right = 652.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OptionButton" type="OptionButton" parent="TopContainer/HBoxContainer" index="0"]
+margin_right = 93.0
+margin_bottom = 20.0
+text = "Weapon"
+
+[node name="OptionButton2" type="OptionButton" parent="TopContainer/HBoxContainer" index="1"]
+margin_left = 97.0
+margin_right = 175.0
+margin_bottom = 20.0
+text = "Magic"
+
+[node name="OptionButton3" type="OptionButton" parent="TopContainer/HBoxContainer" index="2"]
+margin_left = 179.0
+margin_right = 281.0
+margin_bottom = 20.0
+text = "Projectile"
