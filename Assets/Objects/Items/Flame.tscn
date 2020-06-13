@@ -13,7 +13,7 @@ animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "New Anim",
-"speed": 5.0
+"speed": 7.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -24,7 +24,7 @@ extents = Vector2( 5, 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "New Anim"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
