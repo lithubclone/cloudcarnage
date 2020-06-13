@@ -5,12 +5,17 @@
 [node name="Options" instance=ExtResource( 1 )]
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 147.0
-margin_right = 364.0
+margin_left = 403.0
+margin_top = 246.0
+margin_right = 620.0
+margin_bottom = 330.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 217.0
 text = "Options Scene"
 
 [node name="Button" parent="CenterContainer/VBoxContainer" index="1"]
+margin_right = 217.0
+
+[node name="Test" parent="CenterContainer/VBoxContainer" index="2"]
 margin_right = 217.0
