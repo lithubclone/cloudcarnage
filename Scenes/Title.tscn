@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Scenes/Title/Buttons/OptionsButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Sprites/Player0/idle/Player0Idle1.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Title/Buttons/magic_16.tres" type="DynamicFont" id=7]
-[ext_resource path="res://Scenes/Title/FadeIn/FadeIn.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -85,6 +84,6 @@ text = "Version 0.1.1
 Team11 Null"
 align = 2
 valign = 1
-
-[node name="FadeIn" parent="TitleScreen" instance=ExtResource( 8 )]
-visible = false
+[connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/NewGameButton" to="TitleScreen" method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/ContinueButton" to="TitleScreen" method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/OptionsButton" to="TitleScreen" method="_on_OptionsButton_pressed"]
