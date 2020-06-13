@@ -24,26 +24,31 @@ func move():
 	
 	if Input.is_action_pressed("ui_right"):
 		flip = true
+		$GunPosition.position.x *= -1
 		motion.x = min(motion.x+ACCELERATION, SPEED)#*Input.get_action_strength("ui_right") #note 1
 		if is_on_floor():
-			$AnimatedSprite.play("idle")#walk
+			$AnimatedSprite.play("run")#walk
 			$AnimatedSprite.speed_scale = Input.get_action_strength("ui_right")
 		$AnimatedSprite.flip_h = 1
 	elif Input.is_action_pressed("ui_left"):
 		flip = false
+		$GunPosition.position.x *= -1
 		motion.x = max(motion.x-ACCELERATION, -SPEED)#*Input.get_action_strength("ui_left") # note 1
 		if is_on_floor():
-			$AnimatedSprite.play("idle")#walk
+			$AnimatedSprite.play("run")#walk
 			$AnimatedSprite.speed_scale = Input.get_action_strength("ui_left")
 		$AnimatedSprite.flip_h = 0
 	else:
 		friction = true
+		$AnimatedSprite.play("idle")
 	pass
 	
 func _physics_process(delta):
 	
 	motion.y += GRAVITY #Grtavity n sSIOHTiukswareh ölotis
 	motion.y = min(motion.y, 800)	
+	
+	
 	
 	move()
 	if is_on_floor():
@@ -59,10 +64,10 @@ func _physics_process(delta):
 		if friction == true:
 			motion.x = lerp(motion.x,0,0.1)
 		if motion.y < 0:
-			$AnimatedSprite.play("idle")
+			$AnimatedSprite.play("jumpUp")
 			
 		if motion.y > 0:
-			$AnimatedSprite.play("idle")
+			$AnimatedSprite.play("jumpDown")
 	
 	
 	if is_on_wall() and !is_on_floor():  #wall jump stuff. maybe climbing stuff as well. code not stuff. sorry
