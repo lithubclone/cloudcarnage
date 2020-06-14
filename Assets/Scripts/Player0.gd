@@ -61,15 +61,10 @@ func getPlayerNum():
 func death():
 	hp = 100
 	
-	if killerNum == 0:
-		global.score[0]+=1
-	elif killerNum == 1:
-		global.score[1]+=1
-	elif killerNum == 2:
-		global.score[2] += 1
-	elif killerNum == 3:
-		global.score[3]+=1
-		
+	global.score[killerNum] += 1
+	
+	
+	
 	var spawnNum = randi()%4
 	position = spawnPoints[spawnNum].position
 	

@@ -1,5 +1,8 @@
 extends Node
 
+var win = false
+var winner = -1 #number of the player who won
+
 #weapons
 const PISTOL = preload("res://Assets/Objects/Pistol.tscn")
 const MG = preload("res://Assets/Objects/MG.tscn")
@@ -37,6 +40,12 @@ var projectile3
 var element3
 
 var score = [0,0,0,0]
+
+func testWin():
+	for i in range(4):
+		if score[i] >= 10:
+			win = true
+			winner = i
 
 func _ready():
 	pass # Replace with function body.
