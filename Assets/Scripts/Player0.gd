@@ -61,6 +61,7 @@ func getPlayerNum():
 	return playerNum
 
 func death():
+	$AnimatedSprite.speed_scale = 1
 	$AudioDeath.play()
 	dead = true
 	

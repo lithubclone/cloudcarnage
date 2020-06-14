@@ -8,9 +8,9 @@ var reload = 0;
 var input = ["shoot0", "right0", "left0"]
 #var input = ["shoot0", "right0", "left0"]
 var playerNum = 0
-
 var ELEMENT
 var element
+
 
 func _ready():
 	playerNum = get_parent().get_parent().getPlayerNum()
@@ -31,6 +31,9 @@ func enable(var v):
 		visible = false
 
 func _physics_process(delta):
+	
+	element = ELEMENT
+	
 	if reload > 0:
 		reload -= 1*delta;
 	

@@ -1,6 +1,6 @@
 extends Node2D
 
-var PROJECTILE #= preload("res://Assets/Objects/Projectiles/MagicBullet.tscn")
+var PROJECTILE  # = preload("res://Assets/Objects/Projectiles/MagicBullet.tscn")  #PseudoConst
 
 const COOLDOWN = 0.1;
 var reload = 0;
@@ -8,7 +8,6 @@ var reload = 0;
 var input = ["shoot0", "right0", "left0"]
 #var input = ["shoot0", "right0", "left0"]
 var playerNum = 0
-
 var ELEMENT
 var element
 
@@ -32,6 +31,9 @@ func enable(var v):
 		visible = false
 
 func _physics_process(delta):
+	
+	element = ELEMENT
+	
 	if reload > 0:
 		reload -= 1*delta;
 	
@@ -45,10 +47,8 @@ func _physics_process(delta):
 		get_parent().get_parent().get_parent().add_child(projectile)
 		projectile.position = $Position2D.global_position;
 		projectile.setUserNum(get_parent().get_parent().getPlayerNum())
-		#if $Sprite.flip_h == true:
-			#projectile.set_dir(-1)
 		projectile.setElement(element)
-		projectile.dmgMod(0.6)
+		projectile.dmgMod(0.5)
 		projectile.setDir(Vector2(Input.get_joy_axis(playerNum, JOY_AXIS_2),Input.get_joy_axis(playerNum, JOY_AXIS_3)).normalized())
 	elif (Input.is_action_pressed(input[0]) && reload <= 0):
 		reload = COOLDOWN;
@@ -58,7 +58,7 @@ func _physics_process(delta):
 		projectile.position = $Position2D.global_position;
 		projectile.setUserNum(get_parent().get_parent().getPlayerNum())
 		projectile.setElement(element)
-		projectile.dmgMod(0.6)
+		projectile.dmgMod(0.5)
 		if $Sprite.flip_h == true:
 			projectile.setDirSimple(-1)
 		else:

@@ -24,6 +24,7 @@ func _process(delta):
 			timer -= delta
 		else:
 			global.score = [0,0,0,0]
+			global.win = false
 			get_tree().change_scene("res://Scenes/Game/Options.tscn")
 		winscreen()
 	else:

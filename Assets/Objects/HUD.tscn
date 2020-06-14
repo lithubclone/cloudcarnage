@@ -109,7 +109,7 @@ position = Vector2( 512.014, 350 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
+frame = 4
 playing = true
 
 [node name="P1" type="AnimatedSprite" parent="Winbox/Winner"]
@@ -117,7 +117,6 @@ position = Vector2( 512, 350 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 3
 playing = true
 
 [node name="Win_Message_Box" type="CenterContainer" parent="Winbox"]

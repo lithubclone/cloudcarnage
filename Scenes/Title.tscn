@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://icon_128x128.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Fonts/magic/magic dafont.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Assets/Audio/control/selection.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Audio/music/ambient_office_spice0.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sprites/Environment/background_pixelart.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 8 )
@@ -105,6 +106,11 @@ stream = ExtResource( 9 )
 stream = ExtResource( 10 )
 volume_db = -25.0
 autoplay = true
+
+[node name="bckgrnd" type="Sprite" parent="."]
+z_index = -12
+texture = ExtResource( 11 )
+centered = false
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/NewGameButton" to="TitleScreen" method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/ContinueButton" to="TitleScreen" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/OptionsButton" to="TitleScreen" method="_on_OptionsButton_pressed"]
