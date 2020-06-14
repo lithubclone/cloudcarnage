@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://icon_128x128.png" type="Texture" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Assets/Sprites/Player0/idle/Player0Idle1.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Title/Buttons/magic_16.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Assets/Audio/control/selection.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Audio/music/ambient_office_spice0.wav" type="AudioStream" id=9]
 
 [node name="Node2D" type="Node2D"]
 
@@ -49,8 +48,6 @@ alignment = 1
 [node name="NewGameButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
 margin_right = 488.0
 rect_min_size = Vector2( 360, 60 )
-focus_neighbour_bottom = NodePath("../OptionsButton")
-focus_next = NodePath("../OptionsButton")
 
 [node name="ContinueButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
 visible = false
@@ -64,8 +61,6 @@ margin_top = 67.0
 margin_right = 488.0
 margin_bottom = 127.0
 rect_min_size = Vector2( 360, 60 )
-focus_neighbour_top = NodePath("../NewGameButton")
-focus_next = NodePath("../NewGameButton")
 
 [node name="CenterContainer" type="CenterContainer" parent="TitleScreen/Menu/CenterRow"]
 margin_left = 492.0
@@ -97,13 +92,7 @@ valign = 2
 
 [node name="AudioSelection" type="AudioStreamPlayer" parent="TitleScreen"]
 stream = ExtResource( 8 )
-
-[node name="AudioBackground" type="AudioStreamPlayer" parent="TitleScreen"]
-stream = ExtResource( 9 )
-volume_db = -25.0
-autoplay = true
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/NewGameButton" to="TitleScreen" method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/ContinueButton" to="TitleScreen" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/OptionsButton" to="TitleScreen" method="_on_OptionsButton_pressed"]
 [connection signal="finished" from="TitleScreen/AudioSelection" to="TitleScreen" method="_on_AudioSelection_finished"]
-[connection signal="finished" from="TitleScreen/AudioBackground" to="TitleScreen" method="_on_AudioBackground_finished"]

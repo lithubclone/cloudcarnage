@@ -2,6 +2,13 @@ extends Node2D
 
 var userNum
 var dmg = 50
+var element
+
+func getElement():
+	return element
+
+func setElement(var e):
+	element = e
 
 func setDmg(var d):
 	dmg = d

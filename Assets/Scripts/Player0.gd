@@ -27,6 +27,7 @@ var dead = false
 
 func _ready():
 	
+	print(str(playerNum)+" hat Element "+str(element))
 	#iNiTiAlIsIeRe deinen Shit hier!!
 	
 	if playerNum == 0:
@@ -56,10 +57,17 @@ func _ready():
 	
 	pass
 
+func getElement():
+	return element
+
+func setElement(var e):
+	element = e
+
 func getPlayerNum():
 	return playerNum
 
 func death():
+	$AudioDeath.play()
 	dead = true
 	
 	hp = 100
@@ -69,9 +77,52 @@ func death():
 	$AnimatedSprite.play(sprites[5])
 
 func spawn():
+	$AudioSpawn.play()
 	$AnimatedSprite.play(sprites[6])
 	var spawnNum = randi()%4
 	position = spawnPoints[spawnNum].position	
+
+func calcMultiplier(var e):
+	if element == global.FLAME:
+		match e:
+			global.FLAME:
+				return 1
+			global.WATER:
+				return 1.5
+			global.EARTH:
+				return 0.5
+			global.WIND:
+				return 1
+	elif element == global.WATER:
+		match e:
+			global.FLAME:
+				return 0.5
+			global.WATER:
+				return 1
+			global.EARTH:
+				return 1.5
+			global.WIND:
+				return 1
+	elif element == global.EARTH:
+		match e:
+			global.FLAME:
+				return 1.5
+			global.WATER:
+				return 0.5
+			global.EARTH:
+				return 1
+			global.WIND:
+				return 1
+	elif element == global.WIND:
+		match e:
+			global.FLAME:
+				return 1
+			global.WATER:
+				return 1
+			global.EARTH:
+				return 1
+			global.WIND:
+				return 1
 
 func move():
 	
@@ -181,7 +232,8 @@ func _on_Hitbox_area_entered(area):
 	if area.get_collision_layer_bit(2):
 		if area.get_parent().getUserNum() != playerNum:
 			killerNum = area.get_parent().getUserNum()
-			hp -= area.get_parent().dmg
+			
+			hp -= area.get_parent().dmg*calcMultiplier(area.get_parent().getElement())
 			print("Pl0 Hit!"+" HP: "+str(hp))
 			if "Explosion" in area.get_parent().name:
 				area.queue_free()

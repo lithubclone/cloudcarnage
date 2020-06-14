@@ -9,6 +9,7 @@ var timer = 5
 var dmg = 60
 var motion = Vector2(1,0)
 var userNum
+var element
 
 
 func setUserNum(var n):
@@ -24,7 +25,12 @@ func setDirSimple(var dir):
 	else:
 		speed = abs(speed)
 		motion.x = speed
-	
+
+func getElement():
+	return element
+
+func setElement(var e):
+	element = e
 
 func setDir(var v):
 	motion = v
@@ -42,6 +48,7 @@ func explode():
 	explosion.position = position
 	explosion.setDmg(dmg)
 	explosion.setUserNum(userNum)
+	explosion.setElement(element)
 	queue_free()
 
 func _ready():

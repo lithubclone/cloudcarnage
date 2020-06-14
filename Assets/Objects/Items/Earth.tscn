@@ -1,31 +1,31 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Assets/Sprites/Earth/Earth1.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Sprites/Earth/Earth2.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Earth/Earth3.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Earth/Earth4.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Earth/Earth5.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Earth/Earth6.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Earth/Earth7.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/Flames/Flame1.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Flames/Flame2.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/Flames/Flame3.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Sprites/Flames/Flame4.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Sprites/Flames/Flame5.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sprites/Flames/Flame6.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Sprites/Flames/Flame7.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Flames/Flame1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Flames/Flame2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Flames/Flame3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Flames/Flame4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Flames/Flame5.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Flames/Flame6.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Flames/Flame7.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Earth/Earth1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Earth/Earth2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Earth/Earth3.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Earth/Earth4.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Earth/Earth5.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Earth/Earth6.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Earth/Earth7.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "Earth",
-"speed": 5.0
+"name": "New Anim",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "New Anim",
-"speed": 7.0
+"name": "Earth",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -36,7 +36,7 @@ extents = Vector2( 5, 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Earth"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

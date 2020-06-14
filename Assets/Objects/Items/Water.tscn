@@ -7,20 +7,20 @@
 [ext_resource path="res://Assets/Sprites/Earth/Earth5.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/Earth/Earth6.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Earth/Earth7.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/Wind/Wind1.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Wind/Wind2.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/Wind/Wind3.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Sprites/Wind/Wind4.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Sprites/Wind/Wind5.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sprites/Wind/Wind6.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Sprites/Wind/Wind7.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Sprites/Water/Water1.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Sprites/Water/Water2.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Sprites/Water/Water3.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Sprites/Water/Water4.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Sprites/Water/Water5.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Sprites/Water/Water6.png" type="Texture" id=20]
-[ext_resource path="res://Assets/Sprites/Water/Water7.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/Water/Water1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Water/Water2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Water/Water3.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Water/Water4.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Water/Water5.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Water/Water6.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Water/Water7.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Wind/Wind1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Wind/Wind2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Wind/Wind3.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/Wind/Wind4.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/Wind/Wind5.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/Wind/Wind6.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Wind/Wind7.png" type="Texture" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -31,12 +31,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "Wind",
+"name": "Water",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
-"name": "Water",
+"name": "Wind",
 "speed": 5.0
 } ]
 
@@ -48,7 +48,7 @@ extents = Vector2( 5, 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Water"
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
