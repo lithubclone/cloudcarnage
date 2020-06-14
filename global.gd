@@ -11,7 +11,7 @@ const MINE = preload("res://Assets/Objects/Projectiles/Mine.tscn")
 
 #Player 0
 var weapon0 = PISTOL
-var projectile0 = MAGICBULLET
+var projectile0 = MINE
 var element0
 var input0 = ["shoot0","right0","left0","jump0"]
 var sprites0 =["idle0","run0","jumpUp0","jumpDown0","wall0"]

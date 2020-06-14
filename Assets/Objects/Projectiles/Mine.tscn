@@ -7,10 +7,7 @@
 [ext_resource path="res://Assets/Sprites/Projectiles/mine/Mine4.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites/FX/smokeParticle.png" type="Texture" id=6]
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 6, 3 )
-
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -18,51 +15,46 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 14.9876
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.643564, 1 )
 colors = PoolColorArray( 0.800781, 0.800781, 0.800781, 1, 0.560784, 0.560784, 0.560784, 1, 0.427451, 0.427451, 0.427451, 0.792157 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, -1.97506, 0, 0, Vector2( 1, 0.2019 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=7]
-trail_size_modifier = SubResource( 6 )
+[sub_resource type="ParticlesMaterial" id=8]
+trail_size_modifier = SubResource( 7 )
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 1.5
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 5 )
 
-[node name="Mine" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 6, 3 )
+
+[node name="Mine" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 0, -1 )
-shape = SubResource( 8 )
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
-frame = 3
+frames = SubResource( 2 )
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -10 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 visible = false
@@ -70,5 +62,9 @@ amount = 30
 lifetime = 0.3
 speed_scale = 2.1
 local_coords = false
-process_material = SubResource( 7 )
+process_material = SubResource( 8 )
 texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
+shape = SubResource( 9 )

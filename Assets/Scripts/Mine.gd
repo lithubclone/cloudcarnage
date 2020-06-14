@@ -1,7 +1,7 @@
-extends Node2D
+extends KinematicBody2D
 
 const GRAVITY = 20
-var speed = 800
+var speed = 300
 var angle = 0
 var timer = 10
 var dmg = 10
@@ -18,8 +18,10 @@ func getUserNum():
 func setDirSimple(var dir):
 	if dir == 1:
 		speed = -abs(speed)
+		motion.x = speed
 	else:
 		speed = abs(speed)
+		motion.x = speed
 	
 
 func setDir(var v):
@@ -37,16 +39,16 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
+	
 	motion.y += GRAVITY #Grtavity n sSIOHTiukswareh ölotis
 	motion.y = min(motion.y, 800)
 	
-	motion.x = lerp(motion.x,0,0.01)
 	
-	if timer > 0:
-		timer -= delta
-		speed -= 10*delta
+	
+	if is_on_floor():
+		motion.x = lerp(motion.x,0,0.1)
 	else:
-		queue_free()
-		
-	translate(speed*motion*delta)
+		motion.x = lerp(motion.x,0,0.001)
+	
+	move_and_slide(motion, Vector2(0,-1))
 	pass
