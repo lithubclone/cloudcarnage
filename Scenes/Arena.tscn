@@ -35,7 +35,7 @@ func _ready():
 	var item = ITEM[randi()%3].instance()
 	ri= randi()%itemSpawn.size()
 	
-	item.position = itemSpawn[ri].position#global_position()
+	#item.position = itemSpawn[ri].position#global_position()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -199,16 +199,22 @@ texture = ExtResource( 11 )
 [node name="ItemsSpawnPosition" type="Node" parent="."]
 
 [node name="P1" type="Position2D" parent="ItemsSpawnPosition"]
+position = Vector2( 60, 50 )
 
 [node name="P2" type="Position2D" parent="ItemsSpawnPosition"]
+position = Vector2( 290, 32 )
 
 [node name="P3" type="Position2D" parent="ItemsSpawnPosition"]
+position = Vector2( 430, 30 )
 
 [node name="P4" type="Position2D" parent="ItemsSpawnPosition"]
+position = Vector2( 570, 40 )
 
 [node name="P5" type="Position2D" parent="ItemsSpawnPosition"]
+position = Vector2( 870, 50 )
 
 [node name="P6" type="Position2D" parent="ItemsSpawnPosition"]
+position = Vector2( 940, 20 )
 
 [node name="Earth" parent="ItemsSpawnPosition" instance=ExtResource( 12 )]
 position = Vector2( -150, -20 )
