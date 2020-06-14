@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Sprites/Environment/Tilesets/TileMap.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Title/Buttons/magic_36.tres" type="DynamicFont" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://Assets/Audio/music/ambient_office_spice3.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Audio/music/ambient_office_spice4.wav" type="AudioStream" id=10]
 [ext_resource path="res://Assets/Sprites/Environment/background.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Objects/Items/Earth.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Objects/Items/Flame.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Objects/Items/Water.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/Objects/Items/Wind.tscn" type="PackedScene" id=15]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -20,10 +24,18 @@ script/source = "extends Node2D
 # var b = \"text\"
 onready var s = [$AudioBackground0, $AudioBackground1,$AudioBackground2, $AudioBackground3,$AudioBackground4]
 var r = randi()%4
+var ri
+var item = [$ItemsSpawnPosition/Earth, $ItemsSpawnPosition/Flame, $ItemsSpawnPosition/Water]
+var itemSpawn = [$ItemsSpawnPosition/P1, $ItemsSpawnPosition/P2, $ItemsSpawnPosition/P3, $ItemsSpawnPosition/P4, $ItemsSpawnPosition/P5, $ItemsSpawnPosition/P6]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	s[r].play()
+	
+	#var i = item[randi()%3].instance()
+	
+	#ri= randi()%itemSpawn.size()
+	#i.position = itemSpawn[ri].global_position()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -183,6 +195,32 @@ volume_db = -5.0
 show_behind_parent = true
 position = Vector2( 512, 288 )
 texture = ExtResource( 11 )
+
+[node name="ItemsSpawnPosition" type="Node" parent="."]
+
+[node name="P1" type="Position2D" parent="ItemsSpawnPosition"]
+
+[node name="P2" type="Position2D" parent="ItemsSpawnPosition"]
+
+[node name="P3" type="Position2D" parent="ItemsSpawnPosition"]
+
+[node name="P4" type="Position2D" parent="ItemsSpawnPosition"]
+
+[node name="P5" type="Position2D" parent="ItemsSpawnPosition"]
+
+[node name="P6" type="Position2D" parent="ItemsSpawnPosition"]
+
+[node name="Earth" parent="ItemsSpawnPosition" instance=ExtResource( 12 )]
+position = Vector2( -150, -20 )
+
+[node name="Flame" parent="ItemsSpawnPosition" instance=ExtResource( 13 )]
+position = Vector2( -177, -50 )
+
+[node name="Water" parent="ItemsSpawnPosition" instance=ExtResource( 14 )]
+position = Vector2( -170, 10 )
+
+[node name="Wind" parent="ItemsSpawnPosition" instance=ExtResource( 15 )]
+position = Vector2( -210, -20 )
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Configurations" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
 [connection signal="finished" from="CanvasLayer/Pause/AudioStreamPlayer" to="CanvasLayer/Pause" method="_on_AudioStreamPlayer_finished"]
 [connection signal="finished" from="AudioBackground0" to="." method="_on_AudioBackground0_finished"]
