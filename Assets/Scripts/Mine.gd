@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
+const EXPLOSION = preload("res://Assets/Objects/Explosion.tscn")
+
 const GRAVITY = 20
 var speed = 300
 var angle = 0
-var timer = 10
-var dmg = 10
+var timer = 5
+var dmg = 60
 var motion = Vector2(1,0)
 var userNum
 
@@ -34,6 +36,14 @@ func setAngle(var alpha):
 func dmgMod(var d):
 	dmg *= d
 
+func explode():
+	var explosion = EXPLOSION.instance()
+	get_parent().add_child(explosion)
+	explosion.position = position
+	explosion.setDmg(dmg)
+	explosion.setUserNum(userNum)
+	queue_free()
+
 func _ready():
 	
 	pass # Replace with function body.
@@ -43,7 +53,10 @@ func _physics_process(delta):
 	motion.y += GRAVITY #Grtavity n sSIOHTiukswareh ölotis
 	motion.y = min(motion.y, 800)
 	
-	
+	if timer > 0:
+		timer -= delta
+	else:
+		explode()
 	
 	if is_on_floor():
 		motion.x = lerp(motion.x,0,0.1)
@@ -52,3 +65,12 @@ func _physics_process(delta):
 	
 	move_and_slide(motion, Vector2(0,-1))
 	pass
+
+
+func _on_Area2D_area_entered(area):
+	if area.get_collision_layer_bit(1) and area.get_parent().playerNum != userNum:
+		print("Hello")
+		explode()
+		pass
+		
+	pass # Replace with function body.
