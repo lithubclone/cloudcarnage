@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Game/NewGame.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Title/Buttons/magic_36.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Scenes/Title/Buttons/magic_16.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Scenes/Game/TopContainer.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/font0.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/Game/TopContainer.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Title/Buttons/magic_36.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/Title/Buttons/magic_16.tres" type="DynamicFont" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends CenterContainer
@@ -46,11 +47,12 @@ func _on_weapon1_item_selected(ID):
 func _on_magic1_item_selected(ID):
 	match ID:
 		0:
-			global.element0 = global.FLAME
+			global.element0 = \"flame\"
 		1:
-			global.element0 = global.WATER
+			global.element0 = \"water\"
+			print(\"Water Selcetderwasekjgsdfjg\")
 		2:
-			global.element0 = global.EARTH
+			global.element0 = \"earth\"
 		3:
 			global.element0 = global.WIND
 			
@@ -75,11 +77,11 @@ func _on_weapon2_item_selected(ID):
 func _on_magic2_item_selected(ID):
 	match ID:
 		0:
-			global.element1 = global.FLAME
+			global.element1 = \"flame\"
 		1:
-			global.element1 = global.WATER
+			global.element1 = \"water\"
 		2:
-			global.element1 = global.EARTH
+			global.element1 = \"earth\"
 		3:
 			global.element1 = global.WIND
 
@@ -91,7 +93,7 @@ func _on_projectile2_item_selected(ID):
 		1:
 			global.projectile1 = global.MINE"
 
-[node name="Options" instance=ExtResource( 1 )]
+[node name="Options" index="0" instance=ExtResource( 1 )]
 
 [node name="CenterContainer" parent="." index="0"]
 anchor_left = 0.5
@@ -102,26 +104,26 @@ margin_right = 512.0
 margin_bottom = 576.0
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 401.0
+margin_left = 426.0
 margin_top = 246.0
-margin_right = 623.0
+margin_right = 597.0
 margin_bottom = 330.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
-margin_right = 222.0
+margin_right = 171.0
+custom_fonts/font = ExtResource( 2 )
 text = "Modification"
 
 [node name="Back" parent="CenterContainer/VBoxContainer" index="1"]
-margin_right = 222.0
+margin_right = 171.0
 
 [node name="Fight!" type="Button" parent="CenterContainer/VBoxContainer" index="2"]
 margin_top = 64.0
-margin_right = 222.0
+margin_right = 171.0
 margin_bottom = 84.0
 text = "FIGHT!"
 
 [node name="Modifications" type="CenterContainer" parent="." index="1"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_bottom = 230.0
 size_flags_horizontal = 3
@@ -129,18 +131,18 @@ size_flags_vertical = 3
 script = SubResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Modifications" index="0"]
-margin_left = 225.0
-margin_top = 75.0
-margin_right = 799.0
-margin_bottom = 155.0
+margin_left = 177.0
+margin_top = 65.0
+margin_right = 847.0
+margin_bottom = 165.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Modifications/HBoxContainer" index="0"]
-margin_right = 285.0
-margin_bottom = 80.0
+margin_right = 333.0
+margin_bottom = 100.0
 
 [node name="Label" type="Label" parent="Modifications/HBoxContainer/VBoxContainer" index="0"]
-margin_right = 285.0
+margin_right = 333.0
 margin_bottom = 36.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 1, 1 )
@@ -149,79 +151,79 @@ align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer" index="1"]
 margin_top = 40.0
-margin_right = 285.0
-margin_bottom = 80.0
+margin_right = 333.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 93.0
-margin_bottom = 40.0
+margin_right = 110.0
+margin_bottom = 60.0
 
 [node name="Label" type="Label" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1" index="0"]
-margin_right = 93.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 110.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 1, 1 )
 text = "Weapon"
 align = 1
 
 [node name="weapon1" type="OptionButton" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1" index="1"]
-margin_top = 20.0
-margin_right = 93.0
-margin_bottom = 40.0
+margin_top = 40.0
+margin_right = 110.0
+margin_bottom = 60.0
 text = "Weapon"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 97.0
-margin_right = 175.0
-margin_bottom = 40.0
+margin_left = 114.0
+margin_right = 196.0
+margin_bottom = 60.0
 
 [node name="Label2" type="Label" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 78.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 82.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 1, 1 )
 text = "Magic"
 align = 1
 
 [node name="magic1" type="OptionButton" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" index="1"]
-margin_top = 20.0
-margin_right = 78.0
-margin_bottom = 40.0
+margin_top = 40.0
+margin_right = 82.0
+margin_bottom = 60.0
 text = "Magic"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer" index="2"]
-margin_left = 179.0
-margin_right = 281.0
-margin_bottom = 40.0
+margin_left = 200.0
+margin_right = 329.0
+margin_bottom = 60.0
 
 [node name="Label3" type="Label" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" index="0"]
-margin_right = 102.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 129.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 1, 1 )
 text = "Projectile"
 align = 1
 
 [node name="projectile1" type="OptionButton" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" index="1"]
-margin_top = 20.0
-margin_right = 102.0
-margin_bottom = 40.0
+margin_top = 40.0
+margin_right = 129.0
+margin_bottom = 60.0
 text = "Projectile"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer/HBoxContainer" index="3"]
-margin_left = 285.0
-margin_right = 285.0
-margin_bottom = 40.0
+margin_left = 333.0
+margin_right = 333.0
+margin_bottom = 60.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Modifications/HBoxContainer" index="1"]
-margin_left = 289.0
-margin_right = 574.0
-margin_bottom = 80.0
+margin_left = 337.0
+margin_right = 670.0
+margin_bottom = 100.0
 
 [node name="Label" type="Label" parent="Modifications/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 285.0
+margin_right = 333.0
 margin_bottom = 36.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
@@ -230,251 +232,252 @@ align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer2" index="1"]
 margin_top = 40.0
-margin_right = 285.0
-margin_bottom = 80.0
+margin_right = 333.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer" index="0"]
-margin_right = 93.0
-margin_bottom = 40.0
+margin_right = 110.0
+margin_bottom = 60.0
 
 [node name="Label" type="Label" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer1" index="0"]
-margin_right = 93.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 110.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
 text = "Weapon"
 align = 1
 
 [node name="weapon2" type="OptionButton" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer1" index="1"]
-margin_top = 20.0
-margin_right = 93.0
-margin_bottom = 40.0
+margin_top = 40.0
+margin_right = 110.0
+margin_bottom = 60.0
 text = "Weapon"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer" index="1"]
-margin_left = 97.0
-margin_right = 175.0
-margin_bottom = 40.0
+margin_left = 114.0
+margin_right = 196.0
+margin_bottom = 60.0
 
 [node name="Label2" type="Label" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 78.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 82.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
 text = "Magic"
 align = 1
 
 [node name="magic2" type="OptionButton" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" index="1"]
-margin_top = 20.0
-margin_right = 78.0
-margin_bottom = 40.0
+margin_top = 40.0
+margin_right = 82.0
+margin_bottom = 60.0
 text = "Magic"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer" index="2"]
-margin_left = 179.0
-margin_right = 281.0
-margin_bottom = 40.0
+margin_left = 200.0
+margin_right = 329.0
+margin_bottom = 60.0
 
 [node name="Label3" type="Label" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3" index="0"]
-margin_right = 102.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 129.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
 text = "Projectile"
 align = 1
 
 [node name="projectile2" type="OptionButton" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3" index="1"]
-margin_top = 20.0
-margin_right = 102.0
-margin_bottom = 40.0
+margin_top = 40.0
+margin_right = 129.0
+margin_bottom = 60.0
 focus_next = NodePath("../../../../../../Modifications2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1/weapon1")
 text = "Projectile"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Modifications/HBoxContainer/VBoxContainer2/HBoxContainer" index="3"]
-margin_left = 285.0
-margin_right = 285.0
-margin_bottom = 40.0
+margin_left = 333.0
+margin_right = 333.0
+margin_bottom = 60.0
 
 [node name="Modifications2" type="CenterContainer" parent="." index="2"]
 editor/display_folded = true
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -246.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Modifications2" index="0"]
-margin_left = 227.0
-margin_top = 83.0
-margin_right = 797.0
-margin_bottom = 163.0
+margin_left = 182.0
+margin_top = 75.0
+margin_right = 842.0
+margin_bottom = 170.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Modifications2/HBoxContainer" index="0"]
-margin_right = 283.0
-margin_bottom = 80.0
+margin_right = 328.0
+margin_bottom = 95.0
 
 [node name="Label" type="Label" parent="Modifications2/HBoxContainer/VBoxContainer" index="0"]
-margin_right = 283.0
+margin_right = 328.0
 margin_bottom = 36.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 1, 1, 0, 1 )
 text = "Controller Three"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer" index="1"]
 margin_top = 40.0
-margin_right = 283.0
-margin_bottom = 80.0
+margin_right = 328.0
+margin_bottom = 95.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 90.0
-margin_bottom = 40.0
+margin_right = 100.0
+margin_bottom = 55.0
 
 [node name="Label" type="Label" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1" index="0"]
-margin_right = 90.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 100.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 1, 1, 0, 1 )
 text = "Weapon"
 align = 1
 
 [node name="weapon1" type="OptionButton" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1" index="1"]
-margin_top = 20.0
-margin_right = 90.0
-margin_bottom = 40.0
+margin_top = 35.0
+margin_right = 100.0
+margin_bottom = 55.0
 focus_previous = NodePath("../../../../../../Modifications/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3/projectile2")
 text = "weapon"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 94.0
-margin_right = 173.0
-margin_bottom = 40.0
+margin_left = 104.0
+margin_right = 193.0
+margin_bottom = 55.0
 
 [node name="Label2" type="Label" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 79.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 89.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 1, 1, 0, 1 )
 text = "Magic"
 align = 1
 
 [node name="magic1" type="OptionButton" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" index="1"]
-margin_top = 20.0
-margin_right = 79.0
-margin_bottom = 40.0
+margin_top = 35.0
+margin_right = 89.0
+margin_bottom = 55.0
 text = "magic"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer" index="2"]
-margin_left = 177.0
-margin_right = 279.0
-margin_bottom = 40.0
+margin_left = 197.0
+margin_right = 324.0
+margin_bottom = 55.0
 
 [node name="Label3" type="Label" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" index="0"]
-margin_right = 102.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 127.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 1, 1, 0, 1 )
 text = "Projectile"
 align = 1
 
 [node name="projectile1" type="OptionButton" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" index="1"]
-margin_top = 20.0
-margin_right = 102.0
-margin_bottom = 40.0
+margin_top = 35.0
+margin_right = 127.0
+margin_bottom = 55.0
 text = "projectile"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer/HBoxContainer" index="3"]
-margin_left = 283.0
-margin_right = 283.0
-margin_bottom = 40.0
+margin_left = 328.0
+margin_right = 328.0
+margin_bottom = 55.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Modifications2/HBoxContainer" index="1"]
-margin_left = 287.0
-margin_right = 570.0
-margin_bottom = 80.0
+margin_left = 332.0
+margin_right = 660.0
+margin_bottom = 95.0
 
 [node name="Label" type="Label" parent="Modifications2/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 283.0
+margin_right = 328.0
 margin_bottom = 36.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 1, 0, 1 )
 text = "Controller Four"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer2" index="1"]
 margin_top = 40.0
-margin_right = 283.0
-margin_bottom = 80.0
+margin_right = 328.0
+margin_bottom = 95.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer1" type="VBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer" index="0"]
-margin_right = 90.0
-margin_bottom = 40.0
+margin_right = 100.0
+margin_bottom = 55.0
 
 [node name="Label" type="Label" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer1" index="0"]
-margin_right = 90.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 100.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 1, 0, 1 )
 text = "Weapon"
 align = 1
 
 [node name="weapon2" type="OptionButton" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer1" index="1"]
-margin_top = 20.0
-margin_right = 90.0
-margin_bottom = 40.0
+margin_top = 35.0
+margin_right = 100.0
+margin_bottom = 55.0
 text = "weapon"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer" index="1"]
-margin_left = 94.0
-margin_right = 173.0
-margin_bottom = 40.0
+margin_left = 104.0
+margin_right = 193.0
+margin_bottom = 55.0
 
 [node name="Label2" type="Label" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 79.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 89.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 1, 0, 1 )
 text = "Magic"
 align = 1
 
 [node name="magic2" type="OptionButton" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" index="1"]
-margin_top = 20.0
-margin_right = 79.0
-margin_bottom = 40.0
+margin_top = 35.0
+margin_right = 89.0
+margin_bottom = 55.0
 text = "magic"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer" index="2"]
-margin_left = 177.0
-margin_right = 279.0
-margin_bottom = 40.0
+margin_left = 197.0
+margin_right = 324.0
+margin_bottom = 55.0
 
 [node name="Label3" type="Label" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3" index="0"]
-margin_right = 102.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 3 )
+margin_right = 127.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 1, 0, 1 )
 text = "Projectile"
 align = 1
 
 [node name="projectile2" type="OptionButton" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3" index="1"]
-margin_top = 20.0
-margin_right = 102.0
-margin_bottom = 40.0
+margin_top = 35.0
+margin_right = 127.0
+margin_bottom = 55.0
 text = "projectile"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Modifications2/HBoxContainer/VBoxContainer2/HBoxContainer" index="3"]
-margin_left = 283.0
-margin_right = 283.0
-margin_bottom = 40.0
+margin_left = 328.0
+margin_right = 328.0
+margin_bottom = 55.0
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Fight!" to="." method="_on_Fight_pressed"]
 [connection signal="item_selected" from="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1/weapon1" to="Modifications" method="_on_weapon1_item_selected"]
 [connection signal="item_selected" from="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/magic1" to="Modifications" method="_on_magic1_item_selected"]

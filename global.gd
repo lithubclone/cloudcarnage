@@ -18,17 +18,18 @@ const EARTH = preload("res://Assets/Objects/Items/Earth.tscn")
 const WATER = preload("res://Assets/Objects/Items/Water.tscn")
 const WIND = preload("res://Assets/Objects/Items/Wind.tscn")
 
+
 #Player 0
 var weapon0 = PISTOL
 var projectile0 = MAGICBULLET
-var element0 = FLAME
+var element0 = "flame"
 var input0 = ["shoot0","right0","left0","jump0"]
 var sprites0 =["idle0","run0","jumpUp0","jumpDown0","wall0","death0","spawn0"]
 
 #Player 1
 var weapon1 = PISTOL
 var projectile1 = MAGICBULLET
-var element1 = FLAME
+var element1 = "flame"
 var input1 = ["shoot1","right1","left1","jump1"]
 var sprites1 =["idle1","run1","jumpUp1","jumpDown1","wall1","death1","spawn1"]
 

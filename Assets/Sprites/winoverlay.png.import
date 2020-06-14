@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/winoverlay.png-c5b29647eb72ef53b13aadeefbd4215b.stex"
+path="res://.import/winoverlay.png-1059dd8048daa1a1ff0febf5ffce8719.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Hud/winoverlay.png"
-dest_files=[ "res://.import/winoverlay.png-c5b29647eb72ef53b13aadeefbd4215b.stex" ]
+source_file="res://Assets/Sprites/winoverlay.png"
+dest_files=[ "res://.import/winoverlay.png-1059dd8048daa1a1ff0febf5ffce8719.stex" ]
 
 [params]
 

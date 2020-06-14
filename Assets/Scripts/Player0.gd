@@ -41,14 +41,8 @@ func _ready():
 		WEAPON = global.weapon1;
 		element = global.element1
 	
-	match element:
-		"Flame":
-			element = "res://Assets/Objects/Items/Flame.tscn"
-		"Water":
-			element = "res://Assets/Objects/Items/Flame.tscn"
-		"Earth":
-			element = "res://Assets/Objects/Items/Flame.tscn"
-			
+	print(str(playerNum)+" hat Element "+str(element))
+	
 	#add_child(element)
 	weapon = WEAPON.instance()
 	$GunPosition.add_child(weapon)
@@ -74,6 +68,8 @@ func death():
 	
 	global.score[killerNum] += 1
 	
+	global.testWin()
+	
 	$AnimatedSprite.play(sprites[5])
 
 func spawn():
@@ -83,41 +79,42 @@ func spawn():
 	position = spawnPoints[spawnNum].position	
 
 func calcMultiplier(var e):
-	if element == global.FLAME:
+	if element == "flame":
+		print("got here")
 		match e:
-			global.FLAME:
+			"flame":
 				return 1
-			global.WATER:
+			"water":
 				return 1.5
-			global.EARTH:
+			"earth":
 				return 0.5
 			global.WIND:
 				return 1
-	elif element == global.WATER:
+	elif element == "water":
 		match e:
-			global.FLAME:
+			"flame":
 				return 0.5
-			global.WATER:
+			"water":
 				return 1
-			global.EARTH:
+			"earth":
 				return 1.5
 			global.WIND:
 				return 1
-	elif element == global.EARTH:
+	elif element == "earth":
 		match e:
-			global.FLAME:
+			"flame":
 				return 1.5
-			global.WATER:
+			"water":
 				return 0.5
-			global.EARTH:
+			"earth":
 				return 1
 			global.WIND:
 				return 1
-	elif element == global.WIND:
+	elif element == "wind":
 		match e:
-			global.FLAME:
+			"flame":
 				return 1
-			global.WATER:
+			"water":
 				return 1
 			global.EARTH:
 				return 1
@@ -235,8 +232,8 @@ func _on_Hitbox_area_entered(area):
 	if area.get_collision_layer_bit(2):
 		if area.get_parent().getUserNum() != playerNum:
 			killerNum = area.get_parent().getUserNum()
-			
-			hp -= area.get_parent().dmg*calcMultiplier(area.get_parent().getElement())
+			var m =  calcMultiplier(area.get_parent().getElement())
+			hp -= (area.get_parent().dmg * m)
 			print("Pl0 Hit!"+" HP: "+str(hp))
 			if "Explosion" in area.get_parent().name:
 				area.queue_free()

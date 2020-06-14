@@ -1,14 +1,18 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://icon_128x128.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Title/Buttons/NewGameButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Title/Buttons/ContinueButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Title/Buttons/OptionsButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Sprites/Player0/idle/Player0Idle1.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/Title/Buttons/magic_16.tres" type="DynamicFont" id=7]
-[ext_resource path="res://Assets/Audio/control/selection.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Audio/music/ambient_office_spice0.wav" type="AudioStream" id=9]
+[ext_resource path="res://Fonts/font0.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/Title/Buttons/ContinueButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Title/Buttons/OptionsButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sprites/Player0/idle/Player0Idle1.png" type="Texture" id=7]
+[ext_resource path="res://Fonts/magic/magic dafont.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Assets/Audio/control/selection.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Audio/music/ambient_office_spice0.wav" type="AudioStream" id=10]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 8 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -51,15 +55,17 @@ margin_right = 488.0
 rect_min_size = Vector2( 360, 60 )
 focus_neighbour_bottom = NodePath("../OptionsButton")
 focus_next = NodePath("../OptionsButton")
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 
-[node name="ContinueButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+[node name="ContinueButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
 visible = false
 margin_top = 67.0
 margin_right = 488.0
 margin_bottom = 127.0
 rect_min_size = Vector2( 360, 60 )
 
-[node name="OptionsButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
+[node name="OptionsButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 6 )]
 margin_top = 67.0
 margin_right = 488.0
 margin_bottom = 127.0
@@ -79,7 +85,7 @@ margin_left = 228.0
 margin_top = 47.0
 margin_right = 260.0
 margin_bottom = 79.0
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 stretch_mode = 4
 
 [node name="VersionLabel" type="Label" parent="TitleScreen/Menu"]
@@ -89,17 +95,17 @@ margin_bottom = 540.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = SubResource( 2 )
 text = "Version 0.1.1
 Team11 Null"
 align = 2
 valign = 2
 
 [node name="AudioSelection" type="AudioStreamPlayer" parent="TitleScreen"]
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 
 [node name="AudioBackground" type="AudioStreamPlayer" parent="TitleScreen"]
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = -25.0
 autoplay = true
 [connection signal="pressed" from="TitleScreen/Menu/CenterRow/Buttons/NewGameButton" to="TitleScreen" method="_on_NewGameButton_pressed"]

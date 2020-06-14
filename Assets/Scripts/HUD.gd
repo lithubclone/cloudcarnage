@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var win = false
+#var win = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -17,11 +17,13 @@ func _process(delta):
 	#$Scorebox_P3/P3_Score.text = "Purple: " + str(global.score[2])
 	#$Scorebox_P4/P4_Score.text = "Pink: " + str(global.score[3])
 	
+	
 	#if(global.win):
-	if(win):
+	if(global.win):
 		if timer > 0:
 			timer -= delta
 		else:
+			global.score = [0,0,0,0]
 			get_tree().change_scene("res://Scenes/Game/Options.tscn")
 		winscreen()
 	else:

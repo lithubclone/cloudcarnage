@@ -9,15 +9,19 @@ var input = ["shoot0", "right0", "left0"]
 #var input = ["shoot0", "right0", "left0"]
 var playerNum = 0
 
+var ELEMENT
+var element
 
 func _ready():
 	playerNum = get_parent().get_parent().getPlayerNum()
 	if playerNum == 0:
 		input = global.input0
 		PROJECTILE = global.projectile0
+		ELEMENT = global.element0
 	elif playerNum == 1:
 		input = global.input1
 		PROJECTILE = global.projectile1
+		ELEMENT = global.element1
 	pass # Replace with function body.
 
 func enable(var v):
@@ -40,8 +44,7 @@ func _physics_process(delta):
 		get_parent().get_parent().get_parent().add_child(projectile)
 		projectile.position = $Position2D.global_position;
 		projectile.setUserNum(get_parent().get_parent().getPlayerNum())
-		#if $Sprite.flip_h == true:
-			#projectile.set_dir(-1)
+		projectile.setElement(element)
 		projectile.dmgMod(2.5)
 		projectile.setDir(Vector2(Input.get_joy_axis(playerNum, JOY_AXIS_2),Input.get_joy_axis(playerNum, JOY_AXIS_3)).normalized())
 	elif (Input.is_action_pressed(input[0]) && reload <= 0):
@@ -51,6 +54,7 @@ func _physics_process(delta):
 		get_parent().get_parent().get_parent().add_child(projectile)
 		projectile.position = $Position2D.global_position;
 		projectile.setUserNum(get_parent().get_parent().getPlayerNum())
+		projectile.setElement(element)
 		projectile.dmgMod(2.5)
 		if $Sprite.flip_h == true:
 			projectile.setDirSimple(-1)
