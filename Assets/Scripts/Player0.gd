@@ -24,17 +24,20 @@ var input
 var sprites
 
 func _ready():
-	WEAPON = global.weapon0;
+	
 	#iNiTiAlIsIeRe deinen Shit hier!!
-	weapon = WEAPON.instance()
-	$GunPosition.add_child(weapon)
 	
 	if playerNum == 0:
 		input = global.input0
 		sprites = global.sprites0
+		WEAPON = global.weapon0;
 	elif playerNum == 1:
 		input = global.input1
 		sprites = global.sprites1
+		WEAPON = global.weapon1;
+	
+	weapon = WEAPON.instance()
+	$GunPosition.add_child(weapon)
 	#weapon.position = $GunPosition.position
 	spawnPoints = [get_parent().get_node("Spawn0"),get_parent().get_node("Spawn1"),get_parent().get_node("Spawn2"),get_parent().get_node("Spawn3")]
 	
