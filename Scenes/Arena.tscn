@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Sprites/Environment/Tilesets/TileMap.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Title/Buttons/magic_36.tres" type="DynamicFont" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/Audio/music/ambient_office_spice2.wav" type="AudioStream" id=8]
 [ext_resource path="res://Assets/Audio/music/ambient_office_spice3.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Audio/music/ambient_office_spice4.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sprites/Environment/background.png" type="Texture" id=11]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -155,23 +156,28 @@ playerNum = 1
 
 [node name="AudioBackground0" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -25.0
+volume_db = -5.0
 
 [node name="AudioBackground1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -25.0
+volume_db = -5.0
 
 [node name="AudioBackground2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -25.0
+volume_db = -5.0
 
 [node name="AudioBackground3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -25.0
+volume_db = -5.0
 
 [node name="AudioBackground4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = -25.0
+volume_db = -5.0
+
+[node name="Sprite" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 512, 288 )
+texture = ExtResource( 11 )
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Configurations" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
 [connection signal="finished" from="CanvasLayer/Pause/AudioStreamPlayer" to="CanvasLayer/Pause" method="_on_AudioStreamPlayer_finished"]
 [connection signal="finished" from="AudioBackground0" to="." method="_on_AudioBackground0_finished"]

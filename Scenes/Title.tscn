@@ -26,20 +26,20 @@ margin_bottom = 550.0
 
 [node name="Logo" type="TextureRect" parent="TitleScreen/Menu"]
 margin_right = 980.0
-margin_bottom = 303.0
+margin_bottom = 370.0
 size_flags_vertical = 3
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
 [node name="CenterRow" type="HBoxContainer" parent="TitleScreen/Menu"]
-margin_top = 307.0
+margin_top = 374.0
 margin_right = 980.0
 margin_bottom = 501.0
 
 [node name="Buttons" type="VBoxContainer" parent="TitleScreen/Menu/CenterRow"]
 margin_right = 488.0
-margin_bottom = 194.0
+margin_bottom = 127.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 7
@@ -50,29 +50,30 @@ margin_right = 488.0
 rect_min_size = Vector2( 360, 60 )
 
 [node name="ContinueButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+visible = false
 margin_top = 67.0
 margin_right = 488.0
 margin_bottom = 127.0
 rect_min_size = Vector2( 360, 60 )
 
 [node name="OptionsButton" parent="TitleScreen/Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
-margin_top = 134.0
+margin_top = 67.0
 margin_right = 488.0
-margin_bottom = 194.0
+margin_bottom = 127.0
 rect_min_size = Vector2( 360, 60 )
 
 [node name="CenterContainer" type="CenterContainer" parent="TitleScreen/Menu/CenterRow"]
 margin_left = 492.0
 margin_right = 980.0
-margin_bottom = 194.0
+margin_bottom = 127.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Characters" type="TextureRect" parent="TitleScreen/Menu/CenterRow/CenterContainer"]
 margin_left = 228.0
-margin_top = 81.0
+margin_top = 47.0
 margin_right = 260.0
-margin_bottom = 113.0
+margin_bottom = 79.0
 texture = ExtResource( 6 )
 stretch_mode = 4
 

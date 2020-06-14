@@ -23,12 +23,6 @@ func _on_AudioNo_finished():
 	
 func _on_AudioYes_finished():
 	get_tree().change_scene(scene)
-	
-
-
-
-
-
 
 func _on_Fight_pressed():
 	soundYes.play()

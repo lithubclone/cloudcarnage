@@ -9,17 +9,20 @@ const CROSSBOW = preload("res://Assets/Objects/Crossbow.tscn")
 const MAGICBULLET = preload("res://Assets/Objects/Projectiles/MagicBullet.tscn")
 const MINE = preload("res://Assets/Objects/Projectiles/Mine.tscn")
 
+#Elements
+const FLAME = preload("res://Assets/Objects/Items/Flame.tscn")
+
 #Player 0
 var weapon0 = PISTOL
 var projectile0 = MINE
-var element0
+var element0 = FLAME
 var input0 = ["shoot0","right0","left0","jump0"]
 var sprites0 =["idle0","run0","jumpUp0","jumpDown0","wall0"]
 
 #Player 1
 var weapon1 = PISTOL
 var projectile1 = MAGICBULLET
-var element1
+var element1 = FLAME
 var input1 = ["shoot1","right1","left1","jump1"]
 var sprites1 =["idle1","run1","jumpUp1","jumpDown1","wall1"]
 

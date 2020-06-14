@@ -22,6 +22,7 @@ var spawnPoints
 export var playerNum = 0
 var input
 var sprites
+var element
 
 func _ready():
 	
@@ -31,11 +32,22 @@ func _ready():
 		input = global.input0
 		sprites = global.sprites0
 		WEAPON = global.weapon0;
+		element = global.element0
 	elif playerNum == 1:
 		input = global.input1
 		sprites = global.sprites1
 		WEAPON = global.weapon1;
+		element = global.element1
 	
+	match element:
+		"Flame":
+			element = "res://Assets/Objects/Items/Flame.tscn"
+		"Water":
+			element = "res://Assets/Objects/Items/Flame.tscn"
+		"Earth":
+			element = "res://Assets/Objects/Items/Flame.tscn"
+			
+	#add_child(element)
 	weapon = WEAPON.instance()
 	$GunPosition.add_child(weapon)
 	#weapon.position = $GunPosition.position
