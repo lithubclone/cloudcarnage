@@ -64,6 +64,8 @@ func death():
 	$AudioDeath.play()
 	dead = true
 	
+	$Hitbox.monitoring = false
+	
 	hp = 100
 	
 	global.score[killerNum] += 1
@@ -73,6 +75,7 @@ func death():
 	$AnimatedSprite.play(sprites[5])
 
 func spawn():
+	$Hitbox.monitoring = true
 	$AudioSpawn.play()
 	$AnimatedSprite.play(sprites[6])
 	var spawnNum = randi()%4

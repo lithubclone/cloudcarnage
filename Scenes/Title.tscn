@@ -6,7 +6,7 @@
 [ext_resource path="res://Fonts/font0.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/Title/Buttons/ContinueButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Title/Buttons/OptionsButton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Sprites/Player0/idle/Player0Idle1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/controllerControls.png" type="Texture" id=7]
 [ext_resource path="res://Fonts/magic/magic dafont.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Assets/Audio/control/selection.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Audio/music/ambient_office_spice0.wav" type="AudioStream" id=10]
@@ -80,13 +80,10 @@ margin_bottom = 127.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Characters" type="TextureRect" parent="TitleScreen/Menu/CenterRow/CenterContainer"]
-margin_left = 228.0
-margin_top = 47.0
-margin_right = 260.0
-margin_bottom = 79.0
+[node name="Controls" type="Sprite" parent="TitleScreen/Menu/CenterRow/CenterContainer"]
+position = Vector2( 128, 116 )
+scale = Vector2( 1.7, 1.7 )
 texture = ExtResource( 7 )
-stretch_mode = 4
 
 [node name="VersionLabel" type="Label" parent="TitleScreen/Menu"]
 margin_top = 505.0
