@@ -9,7 +9,7 @@ onready var option21 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer
 onready var option22 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/magic2
 onready var option23 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3/projectile2
 #Items (magic, weapon, projectile)
-var m = ["Flame", "Water", "Earth", "WIND"]
+var m = ["Flame", "Water", "Earth"]
 var w = ["Pistol", "Crossbow", "MG"]
 var p = ["MagicBullet", "Mine"]
 
