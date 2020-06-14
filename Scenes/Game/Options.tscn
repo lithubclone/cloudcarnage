@@ -17,48 +17,76 @@ onready var option21 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer
 onready var option22 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/magic2
 onready var option23 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3/projectile2
 #Items (magic, weapon, projectile)
-var m = [\"Fire\", \"Water\", \"Earth\"]
-var w = [\"Pistol\", \"Colt\", \"Airsoft\"]
-var p = [\"MagicBullet\", \"Rocket\", \"Mine\"]
+var m = [\"Flame\", \"Water\", \"Earth\"]
+var w = [\"Pistol\", \"Crossbow\", \"MG\"]
+var p = [\"MagicBullet\", \"Mine\"]
 
 func _ready():
 	for i in range(m.size()):
 		option11.add_item(m[i])
 		option21.add_item(m[i])
-		
 	for i in range(w.size()):
 		option12.add_item(w[i])
 		option22.add_item(w[i])
-		
 	for i in range(p.size()):
 		option13.add_item(p[i])
 		option23.add_item(p[i])
 
-func _on_weapon1_item_selected(ID):
-	global.weapon0 = option11
 
+func _on_weapon1_item_selected(ID):
+	match option11:
+		\"Pistol\":
+			global.weapon0 = global.PISTOL
+		\"Crossbow\":
+			global.weapon0 = global.CROSSBOW
+		\"MG\":
+			global.weapon0 = global.MG
 
 func _on_magic1_item_selected(ID):
-	global.element0 = option12
-
-
+	match option12:
+		\"Flame\":
+			global.element0 = global.FLAME
+		\"Water\":
+			global.element0 = global.WATER
+		\"Earth\":
+			global.element0 = global.EARTH
+			
 func _on_projectile1_item_selected(ID):
-	global.projectile0 = option13
+	match option13:
+		\"MagicBullet\":
+			global.element0 = global.FLAME
+		\"Mine\":
+			global.element0 = global.WATER
 
 
 func _on_weapon2_item_selected(ID):
-	global.weapon1 = option21
+	match option21:
+		\"Pistol\":
+			global.weapon1 = global.PISTOL
+		\"Crossbow\":
+			global.weapon1 = global.CROSSBOW
+		\"MG\":
+			global.weapon1
 
 
 func _on_magic2_item_selected(ID):
-	global.element1 = option22
+	match option22:
+		\"Flame\":
+			global.element1 = global.FLAME
+		\"Water\":
+			global.element1 = global.WATER
+		\"Earth\":
+			global.element1 = global.EARTH
 
 
 func _on_projectile2_item_selected(ID):
-	global.projectile1 = option23
-"
+	match option23:
+		\"MagicBullet\":
+			global.element1 = global.FLAME
+		\"Mine\":
+			global.element1 = global.WATER"
 
-[node name="Options" instance=ExtResource( 1 )]
+[node name="Options" index="0" instance=ExtResource( 1 )]
 
 [node name="CenterContainer" parent="." index="0"]
 anchor_left = 0.5
@@ -80,6 +108,7 @@ text = "Modification"
 margin_right = 222.0
 
 [node name="Modifications" type="CenterContainer" parent="." index="1"]
+editor/display_folded = true
 anchor_right = 1.0
 margin_bottom = 230.0
 size_flags_horizontal = 3

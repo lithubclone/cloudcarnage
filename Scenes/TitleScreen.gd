@@ -9,7 +9,7 @@ func _on_NewGameButton_pressed():
 
 func _on_ContinueButton_pressed():
 	sound.play()
-	scene = "res://Scenes/Game/Continue.tscn"
+	scene = "res://Scenes/TestGround.tscn"
 
 func _on_OptionsButton_pressed():
 	sound.play()
