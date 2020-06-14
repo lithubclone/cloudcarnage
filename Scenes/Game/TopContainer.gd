@@ -46,9 +46,9 @@ func _on_magic1_item_selected(ID):
 func _on_projectile1_item_selected(ID):
 	match ID:
 		0:
-			global.element2 = global.FLAME
+			global.projectile2 = global.MAGICBULLET
 		1:
-			global.element2 = global.WATER
+			global.projectile2 = global.MINE
 
 
 func _on_weapon2_item_selected(ID):
@@ -74,6 +74,6 @@ func _on_magic2_item_selected(ID):
 func _on_projectile2_item_selected(ID):
 	match ID:
 		0:
-			global.element3 = global.FLAME
+			global.projectile3 = global.MAGICBULLET
 		1:
-			global.element3 = global.WATER
+			global.projectile3 = global.MINE

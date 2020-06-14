@@ -3,8 +3,11 @@ extends Control
 onready var soundNo = $AudioNo
 onready var soundYes = $AudioYes
 var scene
+var backButton
 
-
+func _ready():
+	backButton = $CenterContainer/VBoxContainer/Back
+	backButton.grab_focus()
 
 func _on_Back_pressed():
 	soundNo.play()

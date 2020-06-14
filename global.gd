@@ -14,10 +14,12 @@ const MINE = preload("res://Assets/Objects/Projectiles/Mine.tscn")
 
 #Elements
 const FLAME = preload("res://Assets/Objects/Items/Flame.tscn")
+const EARTH = preload("res://Assets/Objects/Items/Flame.tscn")
+const WATER = preload("res://Assets/Objects/Items/Flame.tscn")
 
 #Player 0
 var weapon0 = PISTOL
-var projectile0 = MINE
+var projectile0 = MAGICBULLET
 var element0 = FLAME
 var input0 = ["shoot0","right0","left0","jump0"]
 var sprites0 =["idle0","run0","jumpUp0","jumpDown0","wall0"]
