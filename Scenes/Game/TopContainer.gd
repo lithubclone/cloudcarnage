@@ -9,7 +9,7 @@ onready var option21 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer
 onready var option22 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/magic2
 onready var option23 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3/projectile2
 #Items (magic, weapon, projectile)
-var m = ["Flame", "Water", "Earth"]
+var m = ["Flame", "Water", "Earth", "WIND"]
 var w = ["Pistol", "Crossbow", "MG"]
 var p = ["MagicBullet", "Mine"]
 
@@ -42,6 +42,8 @@ func _on_magic1_item_selected(ID):
 			global.element2 = global.WATER
 		2:
 			global.element2 = global.EARTH
+		3:
+			global.element2 = global.WIND
 			
 func _on_projectile1_item_selected(ID):
 	match ID:
@@ -69,6 +71,8 @@ func _on_magic2_item_selected(ID):
 			global.element3 = global.WATER
 		2:
 			global.element3 = global.EARTH
+		3:
+			global.element3 = global.WIND
 
 
 func _on_projectile2_item_selected(ID):

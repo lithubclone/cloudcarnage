@@ -17,7 +17,7 @@ onready var option21 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer
 onready var option22 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/magic2
 onready var option23 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3/projectile2
 #Items (magic, weapon, projectile)
-var m = [\"Flame\", \"Water\", \"Earth\"]
+var m = [\"Flame\", \"Water\", \"Earth\", \"Wind\"]
 var w = [\"Pistol\", \"Crossbow\", \"MG\"]
 var p = [\"MagicBullet\", \"Mine\"]
 
@@ -51,6 +51,8 @@ func _on_magic1_item_selected(ID):
 			global.element0 = global.WATER
 		2:
 			global.element0 = global.EARTH
+		3:
+			global.element0 = global.WIND
 			
 func _on_projectile1_item_selected(ID):
 	match ID:
@@ -78,6 +80,8 @@ func _on_magic2_item_selected(ID):
 			global.element1 = global.WATER
 		2:
 			global.element1 = global.EARTH
+		3:
+			global.element1 = global.WIND
 
 
 func _on_projectile2_item_selected(ID):
@@ -117,6 +121,7 @@ margin_bottom = 84.0
 text = "FIGHT!"
 
 [node name="Modifications" type="CenterContainer" parent="." index="1"]
+editor/display_folded = true
 anchor_right = 1.0
 margin_bottom = 230.0
 size_flags_horizontal = 3
@@ -293,6 +298,7 @@ margin_right = 285.0
 margin_bottom = 40.0
 
 [node name="Modifications2" type="CenterContainer" parent="." index="2"]
+editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0

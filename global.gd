@@ -16,6 +16,7 @@ const MINE = preload("res://Assets/Objects/Projectiles/Mine.tscn")
 const FLAME = preload("res://Assets/Objects/Items/Flame.tscn")
 const EARTH = preload("res://Assets/Objects/Items/Flame.tscn")
 const WATER = preload("res://Assets/Objects/Items/Flame.tscn")
+const WIND = preload("res://Assets/Objects/Items/Flame.tscn")
 
 #Player 0
 var weapon0 = PISTOL
