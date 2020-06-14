@@ -123,6 +123,9 @@ func calcMultiplier(var e):
 				return 1
 			global.WIND:
 				return 1
+	else:
+		print("Element was"+str(element))
+		return 0
 
 func move():
 	
