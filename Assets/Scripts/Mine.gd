@@ -37,6 +37,7 @@ func _ready():
 func _physics_process(delta):
 	if timer > 0:
 		timer -= delta
+		speed -= 10*delta
 	else:
 		queue_free()
 		

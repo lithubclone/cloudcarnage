@@ -1,6 +1,6 @@
 extends Node2D
 
-const PROJECTILE = preload("res://Assets/Objects/Projectiles/MagicBullet.tscn")
+var PROJECTILE  # = preload("res://Assets/Objects/Projectiles/MagicBullet.tscn")  #PseudoConst
 
 const COOLDOWN = 0.3;
 var reload = 0;
@@ -12,10 +12,13 @@ var playerNum = 0
 
 func _ready():
 	playerNum = get_parent().get_parent().getPlayerNum()
+	
 	if playerNum == 0:
 		input = global.input0
+		PROJECTILE = global.projectile0
 	elif playerNum == 1:
 		input = global.input1
+		PROJECTILE = global.projectile1
 	pass # Replace with function body.
 
 func enable(var v):
