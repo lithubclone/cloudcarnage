@@ -10,7 +10,6 @@ var timer = 5
 func _ready():
 	pass # Replace with function body.
 
-<<<<<<< HEAD
 
 func _process(delta):
 	$Scorebox_P1/P1_Score.text = "Blue: " + str(global.score[0])
@@ -41,11 +40,3 @@ func winscreen():
 		$Winbox/Win_Message_Box/Win_Message.text = "Red won the Game!"
 	else:
 		$Winbox/Win_Message_Box/Win_Message.text = "This Text shouldn't be here!"
-=======
-func _physics_process(delta):
-	$MarginContainer/VSplitContainer/HSplitContainer/Label0.text = "Blue: "+str(global.score[0])
-	$MarginContainer/VSplitContainer/HSplitContainer/Label1.text = "Red: "+str(global.score[1])
-	#$MarginContainer/VSplitContainer/HSplitContainer2/Label2.text = "Yellow: "+str(global.score[2])
-	#$MarginContainer/VSplitContainer/HSplitContainer2/Label3.text = "Green: "+str(global.score[3])
-	pass
->>>>>>> c2d5453f5c81087e08bef4b30db5092050e1c68a
