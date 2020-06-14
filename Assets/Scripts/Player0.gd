@@ -23,6 +23,7 @@ export var playerNum = 0
 var input
 var sprites
 var element
+var dead = false
 
 func _ready():
 	
@@ -59,17 +60,18 @@ func getPlayerNum():
 	return playerNum
 
 func death():
+	dead = true
+	
 	hp = 100
 	
 	global.score[killerNum] += 1
 	
-	
-	
+	$AnimatedSprite.play(sprites[5])
+
+func spawn():
+	$AnimatedSprite.play(sprites[6])
 	var spawnNum = randi()%4
-	position = spawnPoints[spawnNum].position
-	
-	
-	
+	position = spawnPoints[spawnNum].position	
 
 func move():
 	
@@ -101,18 +103,7 @@ func move():
 		$AnimatedSprite.play(sprites[0])
 	pass
 	
-func _physics_process(delta):
-	
-	motion.y += GRAVITY #Grtavity n sSIOHTiukswareh ölotis
-	motion.y = min(motion.y, 800)
-	
-	if hp <= 0:
-		death()
-	
-	
-	
-	move()
-	
+func inAir():
 	if is_on_floor():
 		if (Input.is_action_pressed(input[1]) or Input.is_action_pressed(input[2])):
 			if !$AudioStep.playing:
@@ -159,11 +150,27 @@ func _physics_process(delta):
 	
 	if is_on_ceiling():
 		motion.y += -JUMPFORCE/3
+
+
+func _physics_process(delta):
+	
+	motion.y += GRAVITY #Grtavity n sSIOHTiukswareh ölotis
+	motion.y = min(motion.y, 800)
+	
+	if hp <= 0:
+		death()
+	
+	
+	if !dead:
+		move()
+		inAir()
+	else:
+		motion.x = 0
+	
 	
 	
 	friction = false  #FRICTION! Lets Grind baby
 	
-
 	
 	motion = move_and_slide(motion, UP) # move and slide BITCH
 	
@@ -176,5 +183,17 @@ func _on_Hitbox_area_entered(area):
 			killerNum = area.get_parent().getUserNum()
 			hp -= area.get_parent().dmg
 			print("Pl0 Hit!"+" HP: "+str(hp))
-			area.get_parent().queue_free()
+			if "Explosion" in area.get_parent().name:
+				area.queue_free()
+			else:
+				area.get_parent().queue_free()
+	pass # Replace with function body.
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == sprites[5]:
+		spawn()
+		pass
+	elif $AnimatedSprite.animation == sprites[6]:
+		dead = false
 	pass # Replace with function body.

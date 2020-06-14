@@ -1,18 +1,33 @@
-extends Area2D
+extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var userNum
+var dmg = 50
 
-# Called when the node enters the scene tree for the first time.
+func setDmg(var d):
+	dmg = d
+
+func setUserNum(var n):
+	userNum = n
+
+func getUserNum():
+	return userNum
+
 func _ready():
+	$Audio.play()
 	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _on_AnimatedSprite_animation_finished():
 	$AnimatedSprite.visible = false
+	if !$Audio.playing:
+		queue_free()
 	pass # Replace with function body.
+
+
+func _on_Audio_finished():
+	if $AnimatedSprite.visible == false:
+		queue_free()
+	pass # Replace with function body.
+
+
+
