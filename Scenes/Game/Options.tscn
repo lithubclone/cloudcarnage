@@ -22,68 +22,70 @@ var w = [\"Pistol\", \"Crossbow\", \"MG\"]
 var p = [\"MagicBullet\", \"Mine\"]
 
 func _ready():
-	for i in range(m.size()):
-		option11.add_item(m[i])
-		option21.add_item(m[i])
 	for i in range(w.size()):
-		option12.add_item(w[i])
-		option22.add_item(w[i])
+		option11.add_item(w[i])
+		option21.add_item(w[i])
+	for i in range(m.size()):
+		option12.add_item(m[i])
+		option22.add_item(m[i])
 	for i in range(p.size()):
 		option13.add_item(p[i])
 		option23.add_item(p[i])
 
 
 func _on_weapon1_item_selected(ID):
-	match option11:
-		\"Pistol\":
+
+	match ID:
+		0:
 			global.weapon0 = global.PISTOL
-		\"Crossbow\":
+			print_debug(\"hi\")
+		1:
 			global.weapon0 = global.CROSSBOW
-		\"MG\":
+		2:
 			global.weapon0 = global.MG
 
 func _on_magic1_item_selected(ID):
 	match option12:
-		\"Flame\":
+		0:
 			global.element0 = global.FLAME
-		\"Water\":
+		1:
 			global.element0 = global.WATER
-		\"Earth\":
+		2:
 			global.element0 = global.EARTH
 			
 func _on_projectile1_item_selected(ID):
 	match option13:
-		\"MagicBullet\":
+		0:
 			global.element0 = global.FLAME
-		\"Mine\":
+		1:
 			global.element0 = global.WATER
 
 
 func _on_weapon2_item_selected(ID):
 	match option21:
-		\"Pistol\":
+		0:
 			global.weapon1 = global.PISTOL
-		\"Crossbow\":
+		1:
 			global.weapon1 = global.CROSSBOW
-		\"MG\":
-			global.weapon1
+		2:
+			global.weapon1 = global.MG
 
 
 func _on_magic2_item_selected(ID):
 	match option22:
-		\"Flame\":
+		0:
 			global.element1 = global.FLAME
-		\"Water\":
+		1:
 			global.element1 = global.WATER
-		\"Earth\":
+		2:
 			global.element1 = global.EARTH
 
 
 func _on_projectile2_item_selected(ID):
 	match option23:
-		\"MagicBullet\":
+		0:
 			global.element1 = global.FLAME
-		\"Mine\":
+		1:
 			global.element1 = global.WATER"
 
 [node name="Options" index="0" instance=ExtResource( 1 )]
