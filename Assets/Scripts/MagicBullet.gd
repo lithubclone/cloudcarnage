@@ -6,6 +6,7 @@ var timer = 10
 var dmg = 10
 var motion = Vector2(1,0)
 var userNum
+var element
 
 func setUserNum(var n):
 	userNum = n
@@ -18,7 +19,12 @@ func setDirSimple(var dir):
 		speed = -abs(speed)
 	else:
 		speed = abs(speed)
-	
+
+func getElement():
+	return element
+
+func setElement(var e):
+	element = e
 
 func setDir(var v):
 	motion = v

@@ -41,8 +41,7 @@ func _physics_process(delta):
 		get_parent().get_parent().get_parent().add_child(projectile)
 		projectile.position = $Position2D.global_position;
 		projectile.setUserNum(get_parent().get_parent().getPlayerNum())
-		#if $Sprite.flip_h == true:
-			#projectile.set_dir(-1)
+		
 		projectile.dmgMod(1)
 		projectile.setDir(Vector2(Input.get_joy_axis(playerNum, JOY_AXIS_2),Input.get_joy_axis(playerNum, JOY_AXIS_3)).normalized())
 	elif (Input.is_action_pressed(input[0]) && reload <= 0):
