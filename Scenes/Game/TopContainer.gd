@@ -9,9 +9,9 @@ onready var option21 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer
 onready var option22 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/magic2
 onready var option23 = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer3/projectile2
 #Items (magic, weapon, projectile)
-var m = ["Fire", "Water", "Earth"]
-var w = ["Pistol", "Colt", "Airsoft"]
-var p = ["MagicBullet", "Rocket", "Mine"]
+var m = ["Flame", "Water", "Earth"]
+var w = ["Pistol", "Crossbow", "MG"]
+var p = ["MagicBullet", "Mine"]
 
 func _ready():
 	for i in range(m.size()):
@@ -24,25 +24,56 @@ func _ready():
 		option13.add_item(p[i])
 		option23.add_item(p[i])
 
-func _on_weapon1_item_selected(ID):
-	global.weapon2 = option11
 
+func _on_weapon1_item_selected(ID):
+	match option11:
+		"Pistol":
+			global.weapon2 = global.PISTOL
+		"Crossbow":
+			global.weapon2 = global.CROSSBOW
+		"MG":
+			global.weapon2 = global.MG
 
 func _on_magic1_item_selected(ID):
-	global.element2 = option12
-
-
+	match option12:
+		"Flame":
+			global.element2 = global.FLAME
+		"Water":
+			global.element2 = global.WATER
+		"Earth":
+			global.element2 = global.EARTH
+			
 func _on_projectile1_item_selected(ID):
-	global.projectile2 = option13
+	match option13:
+		"MagicBullet":
+			global.element2 = global.FLAME
+		"Mine":
+			global.element2 = global.WATER
 
 
 func _on_weapon2_item_selected(ID):
-	global.weapon3 = option21
+	match option21:
+		"Pistol":
+			global.weapon3 = global.PISTOL
+		"Crossbow":
+			global.weapon3 = global.CROSSBOW
+		"MG":
+			global.weapon3
 
 
 func _on_magic2_item_selected(ID):
-	global.element3 = option22
+	match option22:
+		"Flame":
+			global.element3 = global.FLAME
+		"Water":
+			global.element3 = global.WATER
+		"Earth":
+			global.element3 = global.EARTH
 
 
 func _on_projectile2_item_selected(ID):
-	global.projectile3 = option23
+	match option23:
+		"MagicBullet":
+			global.element3 = global.FLAME
+		"Mine":
+			global.element3 = global.WATER
