@@ -38,14 +38,13 @@ func _on_weapon1_item_selected(ID):
 	match ID:
 		0:
 			global.weapon0 = global.PISTOL
-			print_debug(\"hi\")
 		1:
 			global.weapon0 = global.CROSSBOW
 		2:
 			global.weapon0 = global.MG
 
 func _on_magic1_item_selected(ID):
-	match option12:
+	match ID:
 		0:
 			global.element0 = global.FLAME
 		1:
@@ -54,7 +53,7 @@ func _on_magic1_item_selected(ID):
 			global.element0 = global.EARTH
 			
 func _on_projectile1_item_selected(ID):
-	match option13:
+	match ID:
 		0:
 			global.element0 = global.FLAME
 		1:
@@ -62,7 +61,7 @@ func _on_projectile1_item_selected(ID):
 
 
 func _on_weapon2_item_selected(ID):
-	match option21:
+	match ID:
 		0:
 			global.weapon1 = global.PISTOL
 		1:
@@ -72,7 +71,7 @@ func _on_weapon2_item_selected(ID):
 
 
 func _on_magic2_item_selected(ID):
-	match option22:
+	match ID:
 		0:
 			global.element1 = global.FLAME
 		1:
@@ -82,7 +81,7 @@ func _on_magic2_item_selected(ID):
 
 
 func _on_projectile2_item_selected(ID):
-	match option23:
+	match ID:
 		0:
 			global.element1 = global.FLAME
 		1:
@@ -100,7 +99,9 @@ margin_bottom = 576.0
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
 margin_left = 401.0
+margin_top = 246.0
 margin_right = 623.0
+margin_bottom = 330.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 222.0
@@ -109,8 +110,13 @@ text = "Modification"
 [node name="Back" parent="CenterContainer/VBoxContainer" index="1"]
 margin_right = 222.0
 
+[node name="Fight!" type="Button" parent="CenterContainer/VBoxContainer" index="2"]
+margin_top = 64.0
+margin_right = 222.0
+margin_bottom = 84.0
+text = "FIGHT!"
+
 [node name="Modifications" type="CenterContainer" parent="." index="1"]
-editor/display_folded = true
 anchor_right = 1.0
 margin_bottom = 230.0
 size_flags_horizontal = 3
@@ -462,6 +468,7 @@ text = "projectile"
 margin_left = 283.0
 margin_right = 283.0
 margin_bottom = 40.0
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Fight!" to="." method="_on_Fight_pressed"]
 [connection signal="item_selected" from="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer1/weapon1" to="Modifications" method="_on_weapon1_item_selected"]
 [connection signal="item_selected" from="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/magic1" to="Modifications" method="_on_magic1_item_selected"]
 [connection signal="item_selected" from="Modifications/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/projectile1" to="Modifications" method="_on_projectile1_item_selected"]

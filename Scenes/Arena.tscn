@@ -63,7 +63,7 @@ func _input(event):
 
 func _on_Menu_pressed():
 	sound.play()
-	scene = \"res://Scenes/Title.tscn\"
+	scene = \"res://Scenes/Game/Options.tscn\"
 	get_tree().paused = false
 	visible = false
 
@@ -121,12 +121,12 @@ Press    Options/Start    or    Esc/P    to continue"
 align = 1
 valign = 2
 
-[node name="Menu" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+[node name="Configurations" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
 margin_top = 337.0
 margin_right = 1024.0
 margin_bottom = 357.0
 size_flags_horizontal = 3
-text = "Back to Menu"
+text = "Configure your Weapons"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Pause"]
 stream = ExtResource( 3 )
@@ -151,15 +151,6 @@ position = Vector2( 230, 100 )
 position = Vector2( 800, 100 )
 playerNum = 1
 
-[node name="Player2" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 210, 400 )
-
-[node name="Player3" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 820, 400 )
-playerNum = 1
-
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="AudioBackground0" type="AudioStreamPlayer" parent="."]
@@ -181,7 +172,7 @@ volume_db = -25.0
 [node name="AudioBackground4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -25.0
-[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Menu" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Configurations" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
 [connection signal="finished" from="CanvasLayer/Pause/AudioStreamPlayer" to="CanvasLayer/Pause" method="_on_AudioStreamPlayer_finished"]
 [connection signal="finished" from="AudioBackground0" to="." method="_on_AudioBackground0_finished"]
 [connection signal="finished" from="AudioBackground1" to="." method="_on_AudioBackground1_finished"]

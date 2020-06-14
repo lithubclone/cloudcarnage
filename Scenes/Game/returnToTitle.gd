@@ -28,3 +28,8 @@ func _on_AudioYes_finished():
 
 
 
+
+
+func _on_Fight_pressed():
+	soundYes.play()
+	scene = "res://Scenes/Arena.tscn"
