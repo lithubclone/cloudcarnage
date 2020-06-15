@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Assets/Scripts/Player1.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Code/Player1.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Player1B/idle/Player1Idle1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Player1B/idle/Player1Idle2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprites/Player1B/idle/Player1Idle3.png" type="Texture" id=4]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Assets/Sprites/Player1B/wall/Player1wall.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Audio/movement/jump.wav" type="AudioStream" id=16]
 [ext_resource path="res://Assets/Audio/movement/scratch.wav" type="AudioStream" id=17]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

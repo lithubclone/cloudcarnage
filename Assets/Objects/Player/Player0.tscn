@@ -1,6 +1,6 @@
 [gd_scene load_steps=133 format=2]
 
-[ext_resource path="res://Assets/Scripts/Player0.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Code/Player0.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Player0/wall/Player0wall.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Player1B/spawn/player1spawn1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprites/Player1B/spawn/player1spawn2.png" type="Texture" id=4]
@@ -129,6 +129,7 @@
 [ext_resource path="res://Assets/Audio/movement/wallslide.wav" type="AudioStream" id=127]
 [ext_resource path="res://Assets/Audio/control/no.wav" type="AudioStream" id=128]
 [ext_resource path="res://Assets/Audio/control/yes.wav" type="AudioStream" id=129]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

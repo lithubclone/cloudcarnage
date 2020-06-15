@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Assets/Scripts/Explosion.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Code/Explosion.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/FX/explosion0/explosion0.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/FX/explosion0/explosion1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprites/FX/explosion0/explosion2.png" type="Texture" id=4]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Sprites/FX/explosion0/explosion7.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Sprites/FX/explosion0/explosion8.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Audio/explosions/explosion2.wav" type="AudioStream" id=11]
+
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
