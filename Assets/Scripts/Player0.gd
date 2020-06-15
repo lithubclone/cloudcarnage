@@ -3,7 +3,7 @@ extends KinematicBody2D
 const UP = Vector2(0,-1); #this is up, duh
 const SPEED = 400; #maximum movement speed
 const ACCELERATION = 110; #maximum acceleration
-const JUMPFORCE = -550; #maximum jump force. negative because up is negative
+const JUMPFORCE = -450; #maximum jump force. negative because up is negative
 const GRAVITY = 27; #personalized player gravity. N SHIT
 
 var WEAPON #pseudo-constante  WORKAROUND FFFFUCKERS
@@ -128,6 +128,12 @@ func calcMultiplier(var e):
 		print("Element was"+str(element))
 		return 0
 
+func hitmarker():
+	for i in range(10):
+		$AnimatedSprite.modulate = Color(255,0,0)
+		yield(get_tree().create_timer(0.1),"timeout")
+		$AnimatedSprite.modulate = false  #BUG
+
 func move():
 	
 	#sprite speed scale
@@ -238,6 +244,7 @@ func _on_Hitbox_area_entered(area):
 			killerNum = area.get_parent().getUserNum()
 			var m =  calcMultiplier(area.get_parent().getElement())
 			hp -= (area.get_parent().dmg * m)
+			#hitmarker() still buggy
 			print("Pl0 Hit!"+" HP: "+str(hp))
 			if "Explosion" in area.get_parent().name:
 				area.queue_free()

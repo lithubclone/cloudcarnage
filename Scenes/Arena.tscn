@@ -25,7 +25,7 @@ script/source = "extends Node2D
 onready var s = [$AudioBackground0, $AudioBackground1,$AudioBackground2, $AudioBackground3,$AudioBackground4]
 var r = randi()%4
 var ri
-const ITEM = [global.EARTH,global.FLAME,global.WATER]
+#const ITEM = [global.EARTH,global.FLAME,global.WATER]
 var itemSpawn = [$ItemsSpawnPosition/P1, $ItemsSpawnPosition/P2, $ItemsSpawnPosition/P3, $ItemsSpawnPosition/P4, $ItemsSpawnPosition/P5, $ItemsSpawnPosition/P6]
 
 # Called when the node enters the scene tree for the first time.
